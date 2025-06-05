@@ -32,7 +32,7 @@ const RoomsPage: React.FC = () => {
   return (
     <div className="container mx-auto px-4 pt-24 pb-16" id="rooms-section">
       {/* Push the section lower */}
-      <p className='text-primary text-lg text-center font-normal mb-3 tracking-widest uppercase'>Rooms</p>
+      <p className='text-[#238967] text-lg text-center font-extrabold  mb-3 tracking-widest uppercase'>Rooms</p>
       <h2 className="text-3xl md:text-4xl font-bold text-center text-black dark:text-white mb-12">
         Our Comfort Rooms
       </h2>
@@ -80,7 +80,7 @@ const Room: React.FC<{
                 key={index}
                 className="flex items-center text-xs sm:text-sm text-white opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 ease-in-out"
               >
-                <span className="mr-2 text-blue-400">●</span>
+                <span className="mr-2 text-[#238967]">●</span>
                 {feature}
               </li>
             ))}
@@ -90,7 +90,7 @@ const Room: React.FC<{
 
       {/* Content Section */}
       <div className="p-4 sm:p-6 bg-white dark:bg-gray-900">
-        <h3 className="text-lg sm:text-xl font-bold text-gray-800 dark:text-gray-200 mb-2 sm:mb-3 group-hover:text-blue-600 transition-colors duration-300">
+        <h3 className="text-lg sm:text-xl font-bold text-gray-800 dark:text-gray-200 mb-2 sm:mb-3 group-hover:text-[#238967] transition-colors duration-300">
           {title}
         </h3>
         <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">

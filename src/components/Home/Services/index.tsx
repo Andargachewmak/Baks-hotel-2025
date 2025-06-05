@@ -14,7 +14,7 @@ const Services = () => {
       >
         {/* Section Title */}
         <div className="text-center mb-14">
-          <p className="text-primary text-lg font-normal mb-3 tracking-widest uppercase">
+          <p className="text-[#238967] text-lg font-extrabold mb-3 tracking-widest uppercase">
             Services
           </p>
           <h2 className="text-3xl lg:text-5xl font-semibold text-black dark:text-white lg:max-w-60% mx-auto">
@@ -27,10 +27,10 @@ const Services = () => {
           {ServicesData.map((items, i) => (
             <div
               key={i}
-              className="relative p-8 rounded-3xl bg-gradient-to-b from-black/5 to-white dark:from-white/5 dark:to-black overflow-hidden text-center"
+              className="relative p-8 rounded-3xl bg-gradient-to-b from-[#A7C48F]/5 to-[#238967] dark:from-[#800020]/5 dark:to-[#800020]overflow-hidden text-center"
             >
               {/* Icon Container (Above the Title) */}
-              <div className="flex justify-center items-center w-24 h-24 rounded-full bg-primary text-white mx-auto mb-6">
+              <div className="flex justify-center items-center w-24 h-24 rounded-full bg-[#238967] text-white mx-auto mb-6">
                 {items.icons && React.cloneElement(items.icons, { size: 48 })} {/* Increased icon size */}
               </div>
 
@@ -40,7 +40,7 @@ const Services = () => {
               </h3>
 
               {/* Service Subheading */}
-              <p className="text-lg font-normal text-black/50 dark:text-white/50 mb-6">
+              <p className="text-lg font-normal text-white/100 dark:text-white/100 mb-6">
                 {items.subheading}
               </p>
 
@@ -48,7 +48,7 @@ const Services = () => {
               <div className="flex items-center justify-center">
                 <Link
                   href="/"
-                  className="text-lg group duration-300 ease-in-out font-medium text-primary flex items-center relative after:absolute after:w-full after:h-px after:bg-primary after:bottom-0 after:right-0 after:translate-x-full hover:after:translate-x-0"
+                  className="text-lg group duration-300 ease-in-out font-medium text-white flex items-center relative after:absolute after:w-full after:h-px after:bg-white after:bottom-0 after:right-0 after:translate-x-full hover:after:translate-x-0"
                 >
                   Learn More
                   <svg
@@ -57,7 +57,7 @@ const Services = () => {
                     height="24"
                     fill="none"
                     viewBox="0 0 24 24"
-                    className="ml-2 text-primary"
+                    className="ml-2 text-[#A7C48F]"
                   >
                     <path
                       stroke="currentColor"

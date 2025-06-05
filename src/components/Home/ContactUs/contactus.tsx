@@ -3,6 +3,7 @@ import emailjs from "@emailjs/browser"; // Import EmailJS for email handling
 import React, { useState } from "react";
 import { useRef } from "react";
 import Head from "next/head";
+import styles from "./contactus.module.css";
 
 const ContactUs = () => {
   const formRef = useRef<HTMLFormElement>(null); // Create a ref for the form element
@@ -111,7 +112,7 @@ const ContactUs = () => {
         <div className="w-full max-w-[1440px] bg-white rounded-3xl p-6 shadow-lg md:p-12 flex flex-col md:flex-row gap-8 items-center justify-center">
           {/* Left Section: Contact Form */}
           <div className="w-full md:w-1/2 p-6 text-black bg-white rounded-2xl shadow-md">
-            <h2 className="text-3xl md:text-4xl font-extrabold text-center md:text-left mb-6 md:mb-8 text-primary">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-center md:text-left mb-6 md:mb-8 text-[#238967]">
               Get in Touch
             </h2>
             <p className="text-sm md:text-base text-center md:text-left text-gray-600 mb-6 md:mb-8">
@@ -149,7 +150,7 @@ const ContactUs = () => {
               />
               <button
                 type="submit"
-                className="w-full bg-primary text-white font-bold p-3 md:p-4 rounded-xl transition duration-300 hover:scale-105 hover:bg-opacity-90"
+                className="w-full bg-[#238967] text-white font-bold p-3 md:p-4 rounded-xl transition duration-300 hover:scale-105 hover:bg-opacity-90"
                 aria-label="Submit Contact Form"
               >
                 Send Message
@@ -160,8 +161,8 @@ const ContactUs = () => {
           {/* Right Section: Contact Information */}
           <div className="w-full md:w-1/2 flex flex-col gap-6 bg-white rounded-2xl shadow-md p-6">
             {/* Contact Details */}
-            <div className="bg-primary p-4 md:p-6 rounded-2xl text-white shadow-md">
-              <h3 className="text-xl md:text-2xl font-bold text-gray-200 mb-4">
+            <div className="bg-[#238967] p-4 md:p-6 rounded-2xl text-white shadow-md">
+              <h3 className="text-xl md:text-2xl font-bold text-black mb-4">
                 Contact Information
               </h3>
               <p className="flex items-center gap-2 md:gap-3 text-sm md:text-lg">
@@ -172,21 +173,21 @@ const ContactUs = () => {
                 {PhoneSVG} <span className="font-medium">+251 93 674 7234</span>
               </p>
               <p className="flex items-center gap-2 md:gap-3 text-sm md:text-lg mt-2">
-                {MapSVG} <span className="font-medium">Liyat Guest House Location</span>
+                {MapSVG} <span className="font-medium">Baks Hotel Location</span>
               </p>
             </div>
-
-            {/* Google Maps Embed */}
-            <div className="rounded-2xl overflow-hidden shadow-md aspect-video w-full">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3940.6117247941015!2d38.7878901!3d9.0078281!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164b85583ae64f8f%3A0xe42e57386efce382!2sLiya%20Guest%20House!5e0!3m2!1sen!2set!4v1744375534854!5m2!1sen!2set"
-                style={{ border: "0", width: "100%", height: "100%" }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Google Maps Location"
-              ></iframe>
-            </div>
+      {/* Google Maps Embed */}
+      <div className="rounded-2xl overflow-hidden shadow-md aspect-video w-full">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.698663651794!2d38.80198727485839!3d8.999850591060317!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164b85b4e9296b7d%3A0x9f00263f38305446!2sBaks%20Hotel!5e0!3m2!1sen!2set!4v1749096236686!5m2!1sen!2set"
+          width="600"
+          height="450"
+          className="contactus-map-iframe"
+          allowFullScreen
+          referrerPolicy="no-referrer-when-downgrade"
+          title="Liyat Guest House Location Map"
+        ></iframe>
+      </div>
           </div>
         </div>
       </div>

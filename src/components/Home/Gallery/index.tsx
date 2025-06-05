@@ -13,7 +13,7 @@ const Gallery = () => {
       >
         {/* Section Title */}
         <div className="text-center mb-14">
-          <p className="text-primary text-lg font-normal mb-3 tracking-widest uppercase">
+          <p className="text-[#238967] text-lg font-extrabold mb-3 tracking-widest uppercase">
             Our Gallery
           </p>
           <h2 className="text-3xl lg:text-5xl font-semibold text-black dark:text-white">
@@ -49,9 +49,9 @@ const Gallery = () => {
                       <p className="text-white text-lg">{item.description}</p>
                       <Link
                         href="#"
-                        className="inline-block text-white rounded-full bg-primary border border-primary py-2 px-6 hover:bg-transparent hover:text-primary transition duration-300"
+                        className="inline-block text-white rounded-full bg-[#238967] border border-white py-2 px-6 hover:bg-transparent hover:text-white transition duration-300"
                       >
-                        Learn More
+                        Book Now
                       </Link>
                     </div>
                   </div>

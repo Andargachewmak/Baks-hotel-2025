@@ -8,7 +8,7 @@ const Logo: React.FC = () => {
       className="flex items-center text-black dark:text-white text-2xl font-semibold gap-4"
     >
       <Image
-        src="/images/logo/icon.png"
+        src="/images/baks/bakshot.png"
         alt="logo"
         width={100}
         height={30}

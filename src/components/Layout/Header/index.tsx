@@ -51,7 +51,7 @@ const Header: React.FC = () => {
     <header
       className={`fixed top-0 z-40 w-full transition-all duration-300 ${
         sticky || pathUrl !== "/"
-          ? "shadow-lg bg-blue-300 dark:bg-blue-300 py-4"
+          ? "shadow-lg bg-[#238967] dark:bg-[#238967] py-4"
           : "shadow-none py-8 bg-transparent"
       }`}
     >
@@ -70,10 +70,10 @@ const Header: React.FC = () => {
           {/* Right Section (Phone Icon + Burger Menu) */}
           <div className="flex items-center gap-4">
             {/* Phone Icon */}
-            <Link href="#" className="text-lg font-medium hover:text-primary">
+            <Link href="#" className="text-lg font-medium hover:text-white">
               <Icon
                 icon="solar:phone-bold"
-                className="text-primary text-3xl inline-block me-2"
+                className="text-white text-3xl inline-block me-2"
               />
               +251913962955
             </Link>
@@ -114,7 +114,7 @@ const Header: React.FC = () => {
         {/* Mobile Navigation Menu */}
         <div
           ref={mobileMenuRef}
-          className={`lg:hidden fixed top-0 right-0 h-full w-64 bg-gray-500 dark:bg-gray-800 shadow-lg transform transition-transform duration-300 ${
+          className={`lg:hidden fixed top-0 right-0 h-full w-64 bg-white dark:bg-gray-800 shadow-lg transform transition-transform duration-300 ${
             navbarOpen ? "translate-x-0" : "translate-x-full"
           } z-50`}
         >
