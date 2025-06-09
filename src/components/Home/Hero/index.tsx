@@ -90,7 +90,7 @@ const Hero = () => {
       const form = new FormData();
       Object.entries(formData).forEach(([key, value]) => form.append(key, String(value)));
 
-      const res = await fetch("https://formspree.io/f/mwpbello",  {
+      const res = await fetch("https://formspree.io/f/xjkryrla",  {
         method: "POST",
         headers: {
           Accept: "application/json",
