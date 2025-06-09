@@ -170,7 +170,7 @@ const ContactUs = () => {
                 <span className="font-medium">contact@example.com</span>
               </p>
               <p className="flex items-center gap-2 md:gap-3 text-sm md:text-lg mt-2">
-                {PhoneSVG} <span className="font-medium">+251 93 674 7234</span>
+                {PhoneSVG} <span className="font-medium">+251911517716</span>
               </p>
               <p className="flex items-center gap-2 md:gap-3 text-sm md:text-lg mt-2">
                 {MapSVG} <span className="font-medium">Baks Hotel Location</span>

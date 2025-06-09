@@ -73,7 +73,7 @@ const Header: React.FC = () => {
                 icon="solar:phone-bold"
                 className="text-white text-3xl inline-block me-2"
               />
-              +251913962955
+              +251911517716
             </Link>
 
             {/* Mobile Menu Button */}
