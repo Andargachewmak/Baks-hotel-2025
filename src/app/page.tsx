@@ -1,15 +1,16 @@
-import React from "react";
+import { Metadata } from "next";
 import Hero from "@/components/Home/Hero";
 import Services from "@/components/Home/Services";
 import Cook from "@/components/Home/Cook";
-// import Expert from "@/components/Home/Expert";
 import Gallery from "@/components/Home/Gallery";
-// import Newsletter from "@/components/Home/Newsletter";
-import { Metadata }     from "next";
 import Room from "@/components/Home/Room/room";
 import ContactUs from "@/components/Home/ContactUs/contactus";
+
 export const metadata: Metadata = {
   title: "Baks Hotel",
+  icons: {
+    icon: "/images/baks/bakshotel.svg", // <-- this path must match the public folder
+  },
 };
 
 export default function Home() {
@@ -19,10 +20,8 @@ export default function Home() {
       <Cook />
       <Services />
       <Room />
-      {/* <Expert /> */}
       <Gallery />
-     <ContactUs/>
-      {/* <Newsletter /> */}
+      <ContactUs />
     </main>
   );
 }

@@ -4,11 +4,10 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { headerData } from "../Header/Navigation/menuData";
 import Logo from "./Logo";
-import Image from "next/image";
 import HeaderLink from "../Header/Navigation/HeaderLink";
 import MobileHeaderLink from "../Header/Navigation/MobileHeaderLink";
 import { useTheme } from "next-themes";
-import { Icon } from "@iconify/react/dist/iconify.js";
+import { Icon } from "@iconify/react";
 
 const Header: React.FC = () => {
   const pathUrl = usePathname();
@@ -17,15 +16,12 @@ const Header: React.FC = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
   const [sticky, setSticky] = useState(false);
 
-  const navbarRef = useRef<HTMLDivElement>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
 
-  // Handle scroll event
   const handleScroll = () => {
     setSticky(window.scrollY >= 20);
   };
 
-  // Handle clicks outside the mobile menu
   const handleClickOutside = (event: MouseEvent) => {
     if (
       mobileMenuRef.current &&
@@ -36,7 +32,6 @@ const Header: React.FC = () => {
     }
   };
 
-  // Add scroll and click event listeners
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     document.addEventListener("mousedown", handleClickOutside);
@@ -69,8 +64,11 @@ const Header: React.FC = () => {
 
           {/* Right Section (Phone Icon + Burger Menu) */}
           <div className="flex items-center gap-4">
-            {/* Phone Icon */}
-            <Link href="#" className="text-lg font-medium hover:text-white">
+            {/* Phone Icon (Desktop Only) */}
+            <Link
+              href="#"
+              className="hidden lg:flex items-center text-lg font-medium hover:text-white"
+            >
               <Icon
                 icon="solar:phone-bold"
                 className="text-white text-3xl inline-block me-2"
@@ -84,21 +82,9 @@ const Header: React.FC = () => {
               className="block lg:hidden p-2 rounded-lg focus:outline-none"
               aria-label="Toggle mobile menu"
             >
-              <span
-                className={`block w-6 h-0.5 transition-all duration-300 ${
-                  sticky || pathUrl !== "/" ? "bg-black" : "bg-black"
-                }`}
-              ></span>
-              <span
-                className={`block w-6 h-0.5 mt-1.5 transition-all duration-300 ${
-                  sticky || pathUrl !== "/" ? "bg-black" : "bg-black"
-                }`}
-              ></span>
-              <span
-                className={`block w-6 h-0.5 mt-1.5 transition-all duration-300 ${
-                  sticky || pathUrl !== "/" ? "bg-black" : "bg-black"
-                }`}
-              ></span>
+              <span className="block w-6 h-0.5 bg-black transition-all duration-300" />
+              <span className="block w-6 h-0.5 mt-1.5 bg-black transition-all duration-300" />
+              <span className="block w-6 h-0.5 mt-1.5 bg-black transition-all duration-300" />
             </button>
           </div>
         </div>
@@ -127,21 +113,30 @@ const Header: React.FC = () => {
             {/* Close Button */}
             <button
               onClick={() => setNavbarOpen(false)}
-              className="p-2 focus:outline-none"
+              className="p-2 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-full focus:outline-none"
               aria-label="Close menu Modal"
             >
               <Icon
                 icon="mdi:close"
-                className="text-2xl text-white dark:text-white"
+                className="text-2xl text-black dark:text-white"
               />
             </button>
           </div>
 
           {/* Mobile Links */}
-          <nav className="flex flex-col items-start p-4">
+          <nav className="flex flex-col items-start p-4 gap-4">
             {headerData.map((item, index) => (
               <MobileHeaderLink key={index} item={item} />
             ))}
+
+            {/* Phone number inside mobile menu */}
+            <Link
+              href="#"
+              className="flex items-center text-base font-medium text-black dark:text-white mt-4"
+            >
+              <Icon icon="solar:phone-bold" className="text-2xl me-2" />
+              +251913962955
+            </Link>
           </nav>
         </div>
       </div>

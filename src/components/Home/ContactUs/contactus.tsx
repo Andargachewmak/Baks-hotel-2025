@@ -105,7 +105,7 @@ const ContactUs = () => {
           content="Get in touch with us through our contact form or visit our location."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+        {/* <link rel="icon" href="/favicon.ico" /> */}
       </Head>
 
       <div className="min-h-screen w-full flex items-center justify-center bg-gray-100 p-6">
