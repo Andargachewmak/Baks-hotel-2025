@@ -148,19 +148,18 @@ const Footer: FC = () => {
                   className="text-white"
                 />
                 <span className="text-white/70 dark:text-white/70 text-base">
-                22 St. Addis Ababa, Ethiopia
-                </span>
+               Aw-Hakm Building, Bob Marley, Addis Ababa                </span>
               </li>
               <li className="pb-5 flex items-center gap-2">
                 <Icon icon="fa-solid:phone-alt" className="text-white" />
                 <span className="text-white/70 dark:text-white/70 text-base">
-                +251913962955
+                +251911517716
                 </span>
               </li>
               <li className="pb-5 flex items-center gap-2">
                 <Icon icon="fa-solid:envelope" className="text-white" />
                 <span className="text-white/70 dark:text-white/70 text-base">
-                  mail@domain.com
+                  bakshotels@gmail.com
                 </span>
               </li>
             </ul>
