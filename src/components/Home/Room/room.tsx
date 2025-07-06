@@ -4,23 +4,23 @@ import Image from "next/image";
 const RoomsPage: React.FC = () => {
   const rooms = [
     {
-      title: "Exclusive Room",
+      title: "Sweet Room",
       description:
         "Luxurious room with private pool and garden view, perfect for couples.",
-      features: ["1 Queen Bed", "Private Pool", "2 - 5 Guests"],
-      imageSrc: "/images/Room/excut.png",
+      features: ["1 Queen Bed",  "1-2  Guests"],
+      imageSrc: "/images/Room/studio4.png",
       altText: "Exclusive Room",
     },
     {
-      title: "Family Room",
+      title: "Twin Room",
       description:
         "Spacious room designed for families with comfortable amenities.",
-      features: ["2 Queen Beds", "Balcony", "Up to 6 Guests"],
-      imageSrc: "/images/Room/Family-Room.png",
+      features: ["2  Beds", "Balcony", "Up to 2 Guests"],
+      imageSrc: "/images/baks/baks.jpg",
       altText: "Family Room",
     },
     {
-      title: "Business Room",
+      title: "Single Room",
       description:
         "Modern room equipped with workspace and high-speed internet.",
       features: ["1 King Bed", "Work Desk", "Free Wi-Fi"],
@@ -73,7 +73,7 @@ const Room: React.FC<{
         />
 
         {/* Overlay with Features List */}
-        <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 bg-gradient-to-t from-black/80 to-transparent">
+        <div className="absolute -bottom-2.5 left-0 right-0 p-2 sm:p-3 bg-gradient-to-t from-black/80 to-transparent">
           <ul className="space-y-1 sm:space-y-2">
             {features.map((feature, index) => (
               <li
