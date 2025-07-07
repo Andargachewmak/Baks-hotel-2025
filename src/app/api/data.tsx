@@ -1,7 +1,7 @@
 import { FaWifi } from "react-icons/fa";
 import { FaParking } from "react-icons/fa";
 import { FaShower } from "react-icons/fa";
-import { MdOutlineBedroomParent } from "react-icons/md";
+import { MdOutlineBedroomParent, MdSupportAgent } from "react-icons/md";
 
 export const ServicesData: {
   icons?: JSX.Element;
@@ -12,23 +12,23 @@ export const ServicesData: {
   {
     icons: <FaWifi />,
     heading: "Wifi",
-    subheading: "Sed ut perspiciatis unde omnis iste natus error",
+    subheading: "Enjoy fast and reliable high-speed internet access throughout the entire property, available for free to all our guests.",
   },
   {
     icons: <FaParking />,
     heading: "car parking",
-    subheading: "Sed ut perspiciatis unde omnis iste natus error",
+    subheading:  "Secure and spacious on-site parking is available for guests, providing peace of mind and easy access during your stay.",
   },
   {
     icons: <FaShower />,
     heading: "Shower",
-    subheading: "Sed ut perspiciatis unde omnis iste natus error",
+    subheading: "All rooms feature modern, clean showers with 24/7 hot water and essential toiletries for your comfort.",
   },
-  {
-    icons: <MdOutlineBedroomParent />,
-    heading: "Rooms services",
-    subheading: "Sed ut perspiciatis unde omnis iste natus error",
-  },
+ {
+  icons: <MdSupportAgent />,
+  heading: "24/7 Front Desk",
+  subheading: "Our friendly reception staff are available around the clock to assist with check-ins, bookings, and guest support at any time.",
+},
 ];
 
 export const ExpertData: {

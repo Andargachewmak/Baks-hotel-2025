@@ -1,10 +1,11 @@
 "use client";
 import Image from "next/image";
-import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
 
 const Hero = () => {
   const formRef = useRef<HTMLDivElement | null>(null);
+  const formContainerRef = useRef<HTMLDivElement | null>(null);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -15,12 +16,12 @@ const Hero = () => {
     children: 0,
   });
 
-  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
-
-  // Modal visibility state
+  const [status, setStatus] = useState<
+    "idle" | "submitting" | "success" | "error"
+  >("idle");
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [showMobileForm, setShowMobileForm] = useState(false);
 
-  // Room data based on adults and children
   const roomData = [
     {
       id: 1,
@@ -62,10 +63,7 @@ const Hero = () => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const increment = (field: "adults" | "children", max: number) => {
@@ -88,19 +86,19 @@ const Hero = () => {
 
     try {
       const form = new FormData();
-      Object.entries(formData).forEach(([key, value]) => form.append(key, String(value)));
+      Object.entries(formData).forEach(([key, value]) =>
+        form.append(key, String(value))
+      );
 
-      const res = await fetch("https://formspree.io/f/xjkryrla",  {
+      const res = await fetch("https://formspree.io/f/xjkryrla", {
         method: "POST",
-        headers: {
-          Accept: "application/json",
-        },
+        headers: { Accept: "application/json" },
         body: form,
       });
 
       if (res.ok) {
         setStatus("success");
-        setIsModalOpen(true); // Open modal on success
+        setIsModalOpen(true);
         setFormData({
           name: "",
           email: "",
@@ -124,231 +122,262 @@ const Hero = () => {
     }
   }, [status]);
 
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.playbackRate = 0.5;
+    }
+  }, []);
+
+  // Close form on outside click (mobile only)
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        showMobileForm &&
+        formContainerRef.current &&
+        !formContainerRef.current.contains(event.target as Node)
+      ) {
+        setShowMobileForm(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [showMobileForm]);
+
   const scrollToForm = () => {
-    formRef.current?.scrollIntoView({ behavior: "smooth" });
+    if (window.innerWidth < 768) {
+      setShowMobileForm(true);
+      setTimeout(() => {
+        formRef.current?.scrollIntoView({ behavior: "smooth" });
+      }, 100);
+    } else {
+      formRef.current?.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
-  // Find the appropriate room based on adults and children
   const findRoom = () => {
     return (
       roomData.find(
         (room) =>
           room.capacity.adults >= formData.adults &&
           room.capacity.children >= formData.children
-      ) || roomData[0] // Default to the first room if no match is found
+      ) || roomData[0]
     );
   };
 
   return (
     <section
       id="home-section"
-      className="relative bg-gray-50 dark:bg-gray-700 overflow-hidden"
-      style={{
-        backgroundImage: `url(/images/baks/baks.png)`,
-        backgroundSize: "cover",
-        backgroundPosition: "top-10%",
-        paddingBottom: "160px", // Reserve space for the form
-      }}
+      className="relative bg-black overflow-hidden pb-[160px]"
     >
-      <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+      {/* Video Background */}
+      <video
+        ref={videoRef}
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover z-0"
+      >
+        <source src="/images/baks/baksvideo1.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
 
-      <div className="container mx-auto lg:max-w-screen-xl md:max-w-screen-md px-4 pt-32 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 justify-start h-full">
-          <div className="col-span-12 text-white text-center pb-24 lg:pb-32">
-            <h1 className="text-3xl lg:text-5xl font-semibold mb-5">
-              Experience Comfort and Hospitality <br />Like Never Before!
-            </h1>
-            <p className="text-md lg:text-base font-normal mb-10">
-              Nestled in the heart of Addis Abeba, Baks Hotel offers a haven of tranquility and
-              warmth for every traveler.
-              <br />
-              Whether you're here for business or leisure, we ensure a delightful stay that feels just
-              like home.
-            </p>
-            <div className="flex flex-col sm:flex-row justify-center space-y-6 sm:space-y-0 sm:space-x-8">
-              {/* Buttons */}
-              <button
-                onClick={scrollToForm}
-                className="text-sm font-medium rounded-full text-white py-3 px-6 bg-[#238967] hover:text-white border border-white hover:bg-transparent transition-all"
-              >
-                Book Now
-              </button>
-              <Link
-                href="#about-section"
-                className="flex border justify-center rounded-full text-sm font-medium items-center py-3 px-8 text-white hover:text-white hover:bg-[#238967] transition-all"
-              >
-                Explore now
-              </Link>
-            </div>
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black bg-opacity-50 z-10" />
+
+      {/* Hero Text */}
+      <div className="container mx-auto px-4 pt-28 sm:pt-32 relative z-10">
+        <div className="text-white text-center pb-20 sm:pb-28">
+          <h1 className="text-3xl sm:text-4xl lg:text-6xl font-semibold mb-4">
+            Welcome to Baks Hotel
+          </h1>
+          <p className="text-base sm:text-lg lg:text-2xl mb-6">
+            A clean and quiet place to rest.
+            <br className="hidden sm:block" />
+            Perfect for locals and diaspora looking for a simple, affordable
+            stay.
+          </p>
+          <div className="flex justify-center">
+            <button
+              onClick={scrollToForm}
+              className="w-fit sm:w-auto bg-[#238967] hover:bg-transparent text-white border border-white px-4 py-2 rounded-full text-sm font-medium transition sm:text-base sm:px-6 sm:py-2.5"
+            >
+              Book Now
+            </button>
           </div>
         </div>
       </div>
 
       {/* Booking Form */}
-      <div
-        ref={formRef}
-        className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-[95%] max-w-5xl bg-white dark:bg-gray-800 shadow-xl rounded-xl p-4 sm:p-6 z-20 border border-gray-200 mt-8"
-      >
-        <form onSubmit={handleSubmit}>
-          <div className="text-xs text-gray-500 mb-2 text-center">
-            <small>
-              Required fields are followed by <abbr title="">*</abbr>
-            </small>
-          </div>
+      <div className="flex justify-center px-2 sm:px-4 md:px-8">
+        <div
+          ref={(el) => {
+            formRef.current = el;
+            formContainerRef.current = el;
+          }}
+          className={`z-20 border border-gray-200 bg-white dark:bg-gray-800 shadow-xl rounded-t-xl 
+            p-3 sm:p-4 md:p-3 transition-all duration-300
+            w-full max-w-md md:max-w-5xl mx-auto
+            ${showMobileForm ? "block mt-4" : "hidden"} md:block md:mt-0
+            md:absolute md:bottom-0 md:left-1/2 md:transform md:-translate-x-1/2`}
+        >
+          {/* Close Button (mobile only) */}
+          {showMobileForm && (
+            <div className="flex justify-end md:hidden mb-2">
+              <button
+                onClick={() => setShowMobileForm(false)}
+                className="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 font-bold text-xl"
+                aria-label="Close form"
+                type="button"
+              >
+                &times;
+              </button>
+            </div>
+          )}
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-            <div>
-              <label className="block text-xs font-medium text-gray-700 mb-1">
-                Full Name <abbr title="">*</abbr>
-              </label>
-              <input
-                type="text"
-                name="name"
-                required
-                value={formData.name}
-                onChange={handleChange}
-                placeholder="Your full name"
-                className="w-full p-1.5 border border-gray-300 rounded text-sm"
-              />
+          <form onSubmit={handleSubmit}>
+            <div className="text-xs text-gray-500 mb-2 text-center">
+              <small>
+                Required fields are followed by <abbr title="">*</abbr>
+              </small>
             </div>
-            <div>
-              <label className="block text-xs font-medium text-gray-700 mb-1">
-                Email <abbr title="">*</abbr>
-              </label>
-              <input
-                type="email"
-                name="email"
-                required
-                value={formData.email}
-                onChange={handleChange}
-                placeholder="you@example.com"
-                className="w-full p-1.5 border border-gray-300 rounded text-sm"
-              />
-            </div>
-          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-            <div>
-              <label className="block text-xs font-medium text-gray-700 mb-1">
-                Check-in <abbr title="">*</abbr>
-              </label>
-              <input
-                type="date"
-                name="checkIn"
-                required
-                value={formData.checkIn}
-                onChange={handleChange}
-                className="w-full p-1.5 border border-gray-300 rounded text-sm"
-              />
-            </div>
-            <div>
-              <label className="block text-xs font-medium text-gray-700 mb-1">
-                Check-out <abbr title="">*</abbr>
-              </label>
-              <input
-                type="date"
-                name="checkOut"
-                required
-                value={formData.checkOut}
-                onChange={handleChange}
-                className="w-full p-1.5 border border-gray-300 rounded text-sm"
-              />
-            </div>
-            <div>
-              <label className="block text-xs font-medium text-gray-700 mb-1">Adults</label>
-              <div className="flex items-center border border-gray-300 rounded">
-                <span className="px-1.5 cursor-pointer" onClick={() => decrement("adults", 1)}>
-                  -
-                </span>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-3">
+              <div>
+                <label className="block text-xs font-medium text-gray-700 mb-1">
+                  Full Name *
+                </label>
                 <input
-                  type="number"
-                  name="adults"
-                  value={formData.adults}
-                  readOnly
-                  className="w-full p-1.5 text-center border-none text-sm bg-transparent"
+                  type="text"
+                  name="name"
+                  required
+                  value={formData.name}
+                  onChange={handleChange}
+                  placeholder="Your full name"
+                  className="w-full py-2 px-2 border border-gray-300 rounded text-sm"
                 />
-                <span className="px-1.5 cursor-pointer" onClick={() => increment("adults", 29)}>
-                  +
-                </span>
+              </div>
+              <div>
+                <label className="block text-xs font-medium text-gray-700 mb-1">
+                  Email *
+                </label>
+                <input
+                  type="email"
+                  name="email"
+                  required
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="you@example.com"
+                  className="w-full py-2 px-2 border border-gray-300 rounded text-sm"
+                />
               </div>
             </div>
-            <div>
-              <label className="block text-xs font-medium text-gray-700 mb-1">Children</label>
-              <div className="flex items-center border border-gray-300 rounded">
-                <span className="px-1.5 cursor-pointer" onClick={() => decrement("children", 0)}>
-                  -
-                </span>
-                <input
-                  type="number"
-                  name="children"
-                  value={formData.children}
-                  readOnly
-                  className="w-full p-1.5 text-center border-none text-sm bg-transparent"
-                />
-                <span className="px-1.5 cursor-pointer" onClick={() => increment("children", 10)}>
-                  +
-                </span>
-              </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+              {["checkIn", "checkOut"].map((field) => (
+                <div key={field}>
+                  <label className="block text-xs font-medium text-gray-700 mb-1 capitalize">
+                    {field.replace("check", "Check-")} *
+                  </label>
+                  <input
+                    type="date"
+                    name={field}
+                    required
+                    value={formData[field as "checkIn" | "checkOut"]}
+                    onChange={handleChange}
+                    className="w-full py-2 px-2 border border-gray-300 rounded text-sm"
+                  />
+                </div>
+              ))}
+              {["adults", "children"].map((field) => (
+                <div key={field}>
+                  <label className="block text-xs font-medium text-gray-700 mb-1 capitalize">
+                    {field}
+                  </label>
+                  <div className="flex items-center border border-gray-300 rounded">
+                    <span
+                      className="px-2 cursor-pointer select-none"
+                      onClick={() =>
+                        decrement(field as any, field === "adults" ? 1 : 0)
+                      }
+                    >
+                      -
+                    </span>
+                    <input
+                      type="number"
+                      name={field}
+                      value={formData[field as "adults" | "children"]}
+                      readOnly
+                      className="w-full py-2 text-center border-none text-sm bg-transparent"
+                    />
+                    <span
+                      className="px-2 cursor-pointer select-none"
+                      onClick={() =>
+                        increment(field as any, field === "adults" ? 29 : 10)
+                      }
+                    >
+                      +
+                    </span>
+                  </div>
+                </div>
+              ))}
             </div>
-          </div>
 
-          {/* Submission Feedback */}
-          <div className="text-center mt-2 min-h-[24px]">
-            {status === "success" && (
-              <p className="text-green-600 text-sm">
-                ✅ Room is available! and the room is reserved for you.
-              </p>
-            )}
-            {status === "error" && (
-              <p className="text-red-600 text-sm">
-                ❌ Something went wrong. Please try again.
-              </p>
-            )}
-          </div>
+            <div className="text-center mt-2 min-h-[24px]">
+              {status === "success" && (
+                <p className="text-green-600 text-sm">✅ Room is reserved for you.</p>
+              )}
+              {status === "error" && (
+                <p className="text-red-600 text-sm">❌ Something went wrong.</p>
+              )}
+            </div>
 
-          <div className="mt-4 text-center">
-            <button
-              type="submit"
-              disabled={status === "submitting"}
-              className="bg-[#238967] text-white px-4 py-2 rounded text-sm hover:bg-opacity-90 transition disabled:opacity-50"
-            >
-              {status === "submitting" ? "Submitting..." : "CHECK AVAILABILITY"}
-            </button>
-          </div>
-        </form>
+            <div className="mt-2 text-center">
+              <button
+                type="submit"
+                disabled={status === "submitting"}
+                className="bg-[#238967] text-white text-sm px-4 py-2 rounded hover:bg-opacity-90 transition disabled:opacity-50"
+              >
+                {status === "submitting" ? "Submitting..." : "CHECK AVAILABILITY"}
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
 
-      {/* Modal for Room Details */}
+      {/* Room Modal */}
       {isModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
           <div className="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-lg max-w-lg w-full relative">
-            {/* Close Button */}
             <button
-              onClick={() => setIsModalOpen(false)}
+              onClick={() => {
+                setIsModalOpen(false);
+                setShowMobileForm(false);
+              }}
               className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 text-xl font-bold"
             >
               &times;
             </button>
             <div className="text-center">
-              {/* Find the appropriate room */}
               {findRoom() && (
                 <>
-                  {/* Room Image */}
                   <Image
                     src={findRoom().image}
-                    alt={`${findRoom().title} Image`}
+                    alt={findRoom().title}
                     width={400}
                     height={200}
                     className="rounded-lg mb-4"
                   />
-                  {/* Room Title */}
                   <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-2">
                     {findRoom().title}
                   </h3>
-                  {/* Room Price */}
-                  <p className="text-gray-600 dark:text-gray-300 mb-2">{findRoom().price}</p>
-                  {/* Room Description */}
-                  <p className="text-gray-700 dark:text-gray-400">{findRoom().description}</p>
+                  <p className="text-gray-600 dark:text-gray-300 mb-2">
+                    {findRoom().price}
+                  </p>
+                  <p className="text-gray-700 dark:text-gray-400">
+                    {findRoom().description}
+                  </p>
                 </>
               )}
             </div>

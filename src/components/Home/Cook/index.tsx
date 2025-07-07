@@ -22,14 +22,12 @@ const Cook = () => {
           {/* Right Column: Text Content */}
           <div className="space-y-6 text-center lg:text-left">
             {/* Subtitle */}
-            <p className="text-[#238967] text-sm sm:text-base font-extrabold tracking-widest uppercase">
+            <p className="text-[#238967] text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold mb-3 tracking-tighter  uppercase">
               About Us
             </p>
 
             {/* Title */}
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-black dark:text-white leading-snug">
-              Welcome to Hotel
-            </h2>
+           
 
             {/* Paragraph 1 */}
             <p className="text-black/60 dark:text-white/60 text-base sm:text-lg">

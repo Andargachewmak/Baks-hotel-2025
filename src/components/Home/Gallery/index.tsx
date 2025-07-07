@@ -13,12 +13,10 @@ const Gallery = () => {
       >
         {/* Section Title */}
         <div className="text-center mb-14">
-          <p className="text-[#238967] text-lg font-extrabold mb-3 tracking-widest uppercase">
+          <p className="text-[#238967] text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold mb-3 tracking-tighter uppercase">
             Our Gallery
           </p>
-          <h2 className="text-3xl lg:text-5xl font-semibold text-black dark:text-white">
-            Explore Our Guest House
-          </h2>
+          
         </div>
 
         {/* Masonry Gallery */}

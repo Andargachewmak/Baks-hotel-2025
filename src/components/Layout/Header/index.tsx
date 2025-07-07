@@ -132,10 +132,10 @@ const Header: React.FC = () => {
             {/* Phone number inside mobile menu */}
             <Link
               href="#"
-              className="flex items-center text-base font-medium text-black dark:text-white mt-4"
+              className="flex items-center text-base font-medium text-white  mt-4"
             >
               <Icon icon="solar:phone-bold" className="text-2xl me-2" />
-              +251913962955
+              +251911517716
             </Link>
           </nav>
         </div>

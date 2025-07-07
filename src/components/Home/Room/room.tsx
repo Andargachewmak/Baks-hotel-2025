@@ -32,11 +32,8 @@ const RoomsPage: React.FC = () => {
   return (
     <div className="container mx-auto px-4 pt-24 pb-16" id="rooms-section">
       {/* Push the section lower */}
-      <p className='text-[#238967] text-lg text-center font-extrabold  mb-3 tracking-widest uppercase'>Rooms</p>
-      <h2 className="text-3xl md:text-4xl font-bold text-center text-black dark:text-white mb-12">
-        Our Comfort Rooms
-      </h2>
-
+      <p className='text-[#238967] text-2xl sm:text-3xl  text-center md:text-4xl lg:text-5xl font-semibold mb-12 tracking-tighter   uppercase'> Our Rooms</p>
+    
       {/* Room Grid with Animation */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 animate-slide-in">
         {rooms.map((room, index) => (
