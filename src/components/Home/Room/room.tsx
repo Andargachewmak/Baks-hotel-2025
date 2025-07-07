@@ -3,31 +3,32 @@ import Image from "next/image";
 
 const RoomsPage: React.FC = () => {
   const rooms = [
-    {
-      title: "Sweet Room",
-      description:
-        "Luxurious room with private pool and garden view, perfect for couples.",
-      features: ["1 Queen Bed",  "1-2  Guests"],
-      imageSrc: "/images/Room/studio4.png",
-      altText: "Exclusive Room",
-    },
-    {
-      title: "Twin Room",
-      description:
-        "Spacious room designed for families with comfortable amenities.",
-      features: ["2  Beds", "Balcony", "Up to 2 Guests"],
-      imageSrc: "/images/baks/baks.jpg",
-      altText: "Family Room",
-    },
-    {
-      title: "Single Room",
-      description:
-        "Modern room equipped with workspace and high-speed internet.",
-      features: ["1 King Bed", "Work Desk", "Free Wi-Fi"],
-      imageSrc: "/images/Room/buisness.png",
-      altText: "Business Room",
-    },
-  ];
+    
+  {
+    title: "Sweet Room",
+    description:
+"Elegant and cozy room with a queen bed, ideal for couples or solo guests seeking comfort.",    features: ["1 Queen Bed", "1–2 Guests"],
+    imageSrc: "/images/Room/studio4.png",
+    altText: "Exclusive Room",
+  },
+  {
+    title: "Twin Room",
+    description:
+      "Comfortable and spacious room with two beds, perfect for friends or small families.",
+    features: ["2 Beds", "Balcony", "Up to 2 Guests"],
+    imageSrc: "/images/baks/baks.jpg",
+    altText: "Family Room",
+  },
+  {
+    title: "Single Room",
+    description:
+      "A sleek and modern room tailored for solo travelers or business guests, with workspace and high-speed internet.",
+    features: ["1 King Bed",  "Free Wi-Fi"],
+    imageSrc: "/images/photo/C2807T01.jpg",
+    altText: "Business Room",
+  },
+];
+
 
   return (
     <div className="container mx-auto px-4 pt-24 pb-16" id="rooms-section">

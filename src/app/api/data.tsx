@@ -41,27 +41,48 @@ export const ExpertData: {
 // data.tsx
 export const galleryImages = [
   {
-    src: "/images/baks/baksho.jpg",
-    name: "Deluxe Double Room",
-    description: "A spacious room with a king-sized bed, perfect for couples or solo travelers.",
-    price: 35,
+    images: [
+      "/images/photo/C2806T01.jpg",
+      "/images/photo/C2804T01.jpg",
+      "/images/photo/C2799T01.jpg",
+    ],
+    name: "",
+    description:
+      "",
+ 
   },
   {
-    src: "/images/baks/baks.jpg",
-    name: "Standard Single Room",
-    description: "A cozy and comfortable room ideal for budget-conscious travelers.",
-    price: 17,
+    images: [
+      "/images/photo/C2789T01.jpg",
+      "/images/photo/C27789T01.jpg",
+      "/images/photo/DSC08977.jpg",
+    ],
+    name: "",
+    description:
+      "",
+  
   },
   {
-    src: "/images/baks/baks2.jpg",
-    name: "Family Suite",
-    description: "A luxurious suite featuring two bedrooms and a living area, perfect for families.",
-    price: 45,
+    images: [
+      "/images/photo/DSC08980.jpg",
+      "/images/photo/DSC08981.jpg",
+      "/images/photo/DSC08978.jpg",
+    ],
+   name: "",
+    description:
+      "",
+    
   },
   {
-    src: "/images/baks/bakss.jpg",
-    name: "VIP Executive Room",
-    description: "An elegant room with premium amenities, designed for business travelers.",
-    price: 27,
+    images: [
+      "/images/photo/C2826T01.jpg",
+      "/images/photo/C2824T01.jpg",
+      "/images/photo/C2821T01.jpg",
+    ],
+    name: "",
+    description:
+      "",
+    
   },
+   
 ];

@@ -1,6 +1,5 @@
 import React, { FC } from "react";
 import Link from "next/link";
-import { headerData } from "../Header/Navigation/menuData";
 import { Icon } from "@iconify/react";
 import Logo from "../Header/Logo";
 
@@ -9,17 +8,18 @@ const Footer: FC = () => {
     <footer className="pt-16 bg-[#238967]">
       {/* Main Footer Content */}
       <div className="container mx-auto lg:max-w-screen-xl md:max-w-screen-md px-4">
-        <div className="grid grid-cols-1 sm:grid-cols-4 lg:gap-20 md:gap-6 sm:gap-12 gap-6 pb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-4 lg:gap-20 md:gap-6 sm:gap-12 gap-6 pb-19">
           {/* Column 1: Logo and Social Media */}
           <div className="col-span-1">
             <Logo />
             <p className="text-xs font-medium text-grey dark:text-white/50 mt-5 mb-16 max-w-[70%]">
-              Open an account in minutes, get full financial control for much
-              longer.
+              Comfort Redefined. Hospitality Perfected.
             </p>
             <div className="flex gap-6 items-center">
               <Link
-                href="#"
+                href="https://web.facebook.com/profile.php?id=61577866152880"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group bg-black hover:bg-[#A7C48F] rounded-full shadow-xl p-3"
               >
                 <Icon
@@ -30,7 +30,9 @@ const Footer: FC = () => {
                 />
               </Link>
               <Link
-                href="#"
+                href="https://www.instagram.com/bakshotel/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group bg-black hover:bg-[#A7C48F] rounded-full shadow-xl p-3"
               >
                 <Icon
@@ -41,11 +43,13 @@ const Footer: FC = () => {
                 />
               </Link>
               <Link
-                href="#"
+                href="https://www.tiktok.com/@bakshotel?lang=en"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group bg-black hover:bg-[#A7C48F] rounded-full shadow-xl p-3"
               >
                 <Icon
-                  icon="fa6-brands:x-twitter"
+                  icon="cib:tiktok"
                   width="16"
                   height="16"
                   className="group-hover:text-white text-white"
@@ -143,24 +147,23 @@ const Footer: FC = () => {
             </h4>
             <ul>
               <li className="pb-3 flex items-center gap-2">
-                <Icon
-                  icon="fa-solid:map-marker-alt"
-                  className="text-white"
-                />
+                <Icon icon="fa-solid:map-marker-alt" className="text-white" />
                 <span className="text-white/70 dark:text-white/70 text-base">
-               Aw-Hakm Building, Bob Marley, Addis Ababa                </span>
+                  Aw-Hakm Building, Bob Marley, Addis Ababa
+                </span>
               </li>
               <li className="pb-3 flex items-center gap-2">
                 <Icon icon="fa-solid:phone-alt" className="text-white" />
                 <span className="text-white/70 dark:text-white/70 text-base">
-                +251911517716
+                  +251911517716
                 </span>
-               
               </li>
-              <li><div className="flex items-center space-x-2 pb-3 text-white/70">
+              <li>
+                <div className="flex items-center space-x-2 pb-3 text-white/70">
                   <Icon icon="mdi:whatsapp" width={24} height={24} className="text-white" />
                   <span>+447915609464</span>
-                </div></li>
+                </div>
+              </li>
               <li className="pb-3 flex items-center gap-2">
                 <Icon icon="fa-solid:envelope" className="text-white" />
                 <span className="text-white/70 dark:text-white/70 text-base">
@@ -168,8 +171,6 @@ const Footer: FC = () => {
                 </span>
               </li>
             </ul>
-
-           
           </div>
         </div>
 
