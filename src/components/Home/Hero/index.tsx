@@ -16,20 +16,17 @@ const Hero = () => {
     children: 0,
   });
 
-  const [status, setStatus] = useState<
-    "idle" | "submitting" | "success" | "error"
-  >("idle");
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [showMobileForm, setShowMobileForm] = useState(false);
 
   const roomData = [
     {
       id: 1,
-      image: "/images/baks/baks2.jpg",
-      title: "Standard Room",
-      price: "$100/night",
-      description:
-        "A cozy standard room with a single bed and shared bathroom, perfect for solo travelers.",
+      image: "/images/photo/C2804T01.jpg",
+      title: "single Room",
+      price: "",
+      description: "A cozy standard room with a single bed and shared bathroom, perfect for solo travelers.",
       capacity: { adults: 1, children: 0 },
     },
     {
@@ -37,8 +34,7 @@ const Hero = () => {
       image: "/images/Room/buisness.png",
       title: "Business Suite",
       price: "$250/night",
-      description:
-        "A luxurious business suite with a king-sized bed, private bathroom, and stunning city views.",
+      description: "A luxurious business suite with a king-sized bed, private bathroom, and stunning city views.",
       capacity: { adults: 2, children: 0 },
     },
     {
@@ -46,8 +42,7 @@ const Hero = () => {
       image: "/images/Room/excut.png",
       title: "Executive Suite",
       price: "$350/night",
-      description:
-        "An exclusive executive suite with premium amenities, ideal for business travelers.",
+      description: "An exclusive executive suite with premium amenities, ideal for business travelers.",
       capacity: { adults: 2, children: 0 },
     },
     {
@@ -55,8 +50,7 @@ const Hero = () => {
       image: "/images/Room/Family-Room.png",
       title: "Family Room",
       price: "$400/night",
-      description:
-        "A spacious family room with multiple beds, perfect for families or groups.",
+      description: "A spacious family room with multiple beds, perfect for families or groups.",
       capacity: { adults: 2, children: 2 },
     },
   ];
@@ -67,46 +61,28 @@ const Hero = () => {
   };
 
   const increment = (field: "adults" | "children", max: number) => {
-    setFormData((prev) => ({
-      ...prev,
-      [field]: Math.min(prev[field] + 1, max),
-    }));
+    setFormData((prev) => ({ ...prev, [field]: Math.min(prev[field] + 1, max) }));
   };
 
   const decrement = (field: "adults" | "children", min: number) => {
-    setFormData((prev) => ({
-      ...prev,
-      [field]: Math.max(prev[field] - 1, min),
-    }));
+    setFormData((prev) => ({ ...prev, [field]: Math.max(prev[field] - 1, min) }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("submitting");
-
     try {
       const form = new FormData();
-      Object.entries(formData).forEach(([key, value]) =>
-        form.append(key, String(value))
-      );
-
+      Object.entries(formData).forEach(([key, value]) => form.append(key, String(value)));
       const res = await fetch("https://formspree.io/f/xjkryrla", {
         method: "POST",
         headers: { Accept: "application/json" },
         body: form,
       });
-
       if (res.ok) {
         setStatus("success");
         setIsModalOpen(true);
-        setFormData({
-          name: "",
-          email: "",
-          checkIn: "",
-          checkOut: "",
-          adults: 1,
-          children: 0,
-        });
+        setFormData({ name: "", email: "", checkIn: "", checkOut: "", adults: 1, children: 0 });
       } else {
         setStatus("error");
       }
@@ -124,22 +100,19 @@ const Hero = () => {
 
   useEffect(() => {
     if (videoRef.current) {
-      videoRef.current.playbackRate = 0.5;
+      const video = videoRef.current;
+      video.load();
+      video.play().catch((err) => console.warn("Autoplay failed:", err));
+      video.playbackRate = 0.5;
     }
   }, []);
 
-  // Close form on outside click (mobile only)
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (
-        showMobileForm &&
-        formContainerRef.current &&
-        !formContainerRef.current.contains(event.target as Node)
-      ) {
+      if (showMobileForm && formContainerRef.current && !formContainerRef.current.contains(event.target as Node)) {
         setShowMobileForm(false);
       }
     };
-
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [showMobileForm]);
@@ -147,9 +120,7 @@ const Hero = () => {
   const scrollToForm = () => {
     if (window.innerWidth < 768) {
       setShowMobileForm(true);
-      setTimeout(() => {
-        formRef.current?.scrollIntoView({ behavior: "smooth" });
-      }, 100);
+      setTimeout(() => formRef.current?.scrollIntoView({ behavior: "smooth" }), 100);
     } else {
       formRef.current?.scrollIntoView({ behavior: "smooth" });
     }
@@ -158,45 +129,36 @@ const Hero = () => {
   const findRoom = () => {
     return (
       roomData.find(
-        (room) =>
-          room.capacity.adults >= formData.adults &&
-          room.capacity.children >= formData.children
+        (room) => room.capacity.adults >= formData.adults && room.capacity.children >= formData.children
       ) || roomData[0]
     );
   };
 
   return (
-    <section
-      id="home-section"
-      className="relative bg-black overflow-hidden pb-[160px]"
-    >
-      {/* Video Background */}
+    <section id="home-section" className="relative bg-black overflow-hidden pb-[160px]">
       <video
         ref={videoRef}
         autoPlay
         muted
         loop
         playsInline
-        className="absolute inset-0 w-full h-full object-cover z-0"
+        preload="auto"
+        poster="/images/baks/baks.png"
+        className="absolute inset-0 w-full h-full object-cover object-top md:object-center z-0"
       >
         <source src="/images/baks/baksvideo1.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
-      {/* Overlay */}
       <div className="absolute inset-0 bg-black bg-opacity-50 z-10" />
 
-      {/* Hero Text */}
       <div className="container mx-auto px-4 pt-28 sm:pt-32 relative z-10">
         <div className="text-white text-center pb-20 sm:pb-28">
-          <h1 className="text-3xl sm:text-4xl lg:text-6xl font-semibold mb-4">
-            Welcome to Baks Hotel
-          </h1>
+          <h1 className="text-3xl sm:text-4xl lg:text-6xl font-semibold mb-4">Welcome to Baks Hotel</h1>
           <p className="text-base sm:text-lg lg:text-2xl mb-6">
             A clean and quiet place to rest.
             <br className="hidden sm:block" />
-            Perfect for locals and diaspora looking for a simple, affordable
-            stay.
+            Perfect for locals and diaspora looking for a simple, affordable stay.
           </p>
           <div className="flex justify-center">
             <button
@@ -208,7 +170,6 @@ const Hero = () => {
           </div>
         </div>
       </div>
-
       {/* Booking Form */}
       <div className="flex justify-center px-2 sm:px-4 md:px-8">
         <div

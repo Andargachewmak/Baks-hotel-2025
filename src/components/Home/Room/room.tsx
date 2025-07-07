@@ -24,7 +24,7 @@ const RoomsPage: React.FC = () => {
     description:
       "A sleek and modern room tailored for solo travelers or business guests, with workspace and high-speed internet.",
     features: ["1 King Bed",  "Free Wi-Fi"],
-    imageSrc: "/images/photo/C2807T01.jpg",
+    imageSrc: "/images/photo/C2733T01.jpg",
     altText: "Business Room",
   },
 ];

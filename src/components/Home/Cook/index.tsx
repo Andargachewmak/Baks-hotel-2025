@@ -10,10 +10,10 @@ const Cook = () => {
           {/* Left Column: Image */}
           <div className="flex justify-center lg:justify-end">
             <Image
-              src="/images/baks/baks1.jpg"
+              src="/images/baks/baks.png"
               alt="Liyat Guest House"
-              width={500}
-              height={600}
+              width={600}
+              height={900}
               className="rounded-lg shadow-lg object-cover w-full max-w-[400px] sm:max-w-[500px] h-auto"
               priority
             />

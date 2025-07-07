@@ -54,8 +54,8 @@ export const galleryImages = [
   {
     images: [
       "/images/photo/C2789T01.jpg",
-      "/images/photo/C27789T01.jpg",
-      "/images/photo/DSC08977.jpg",
+      "/images/photo/C2714T01.jpg",
+      "/images/photo/C2752T01.jpg",
     ],
     name: "",
     description:

@@ -122,11 +122,13 @@ const ImageSliderCard = ({ item }: { item: GalleryItem }) => {
             <p className="text-white text-xl font-bold">{item.name}</p>
             <p className="text-white text-lg">{item.description}</p>
             <Link
-              href="#"
+              href="#checkin-form"
+              scroll={true}
               className="inline-block text-white rounded-full bg-[#238967] border border-white py-2 px-6 hover:bg-transparent hover:text-white transition duration-300"
             >
               Book Now
             </Link>
+
           </div>
         </div>
       </div>

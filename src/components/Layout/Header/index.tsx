@@ -82,9 +82,9 @@ const Header: React.FC = () => {
               className="block lg:hidden p-2 rounded-lg focus:outline-none"
               aria-label="Toggle mobile menu"
             >
-              <span className="block w-6 h-0.5 bg-black transition-all duration-300" />
-              <span className="block w-6 h-0.5 mt-1.5 bg-black transition-all duration-300" />
-              <span className="block w-6 h-0.5 mt-1.5 bg-black transition-all duration-300" />
+              <span className="block w-6 h-0.5 bg-white transition-all duration-300" />
+              <span className="block w-6 h-0.5 mt-1.5 bg-white transition-all duration-300" />
+              <span className="block w-6 h-0.5 mt-1.5 bg-white transition-all duration-300" />
             </button>
           </div>
         </div>
@@ -100,7 +100,7 @@ const Header: React.FC = () => {
         {/* Mobile Navigation Menu */}
         <div
           ref={mobileMenuRef}
-          className={`lg:hidden fixed top-0 right-0 h-full w-64 bg-white dark:bg-gray-800 shadow-lg transform transition-transform duration-300 ${
+          className={`lg:hidden fixed top-0 right-0 h-full w-75 bg-white dark:bg-gray-800 shadow-lg transform transition-transform duration-300 ${
             navbarOpen ? "translate-x-0" : "translate-x-full"
           } z-50`}
         >
@@ -124,7 +124,7 @@ const Header: React.FC = () => {
           </div>
 
           {/* Mobile Links */}
-          <nav className="flex flex-col items-start p-4 gap-4">
+          <nav className="flex flex-col items-start  p-4 gap-4">
             {headerData.map((item, index) => (
               <MobileHeaderLink key={index} item={item} />
             ))}
@@ -132,7 +132,7 @@ const Header: React.FC = () => {
             {/* Phone number inside mobile menu */}
             <Link
               href="#"
-              className="flex items-center text-base font-medium text-white  mt-4"
+              className="flex items-center text-base font-medium text-black dark:text-white mt-4"
             >
               <Icon icon="solar:phone-bold" className="text-2xl me-2" />
               +251911517716
