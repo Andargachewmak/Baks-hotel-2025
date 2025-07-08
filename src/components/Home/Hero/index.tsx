@@ -30,40 +30,40 @@ const Hero = () => {
     capacity: { adults: number; children: number };
   } | null>(null);
 
-const roomData = [
-  {
-    id: 1,
-    image: "/images/photo/C2728T01.jpg",
-    title: "Studio Room",
-    price: "",
-    description: "A compact and comfortable studio room ideal for solo travelers or short stays.",
-    capacity: { adults: 1, children: 0 },
-  },
-  {
-    id: 2,
-    image: "/images/baks/baks.jpg",
-    title: "Twin Room",
-    price: "",
-    description: "A modern twin room with two separate beds, perfect for friends or colleagues.",
-    capacity: { adults: 2, children: 0 },
-  },
-  {
-    id: 3,
-    image: "/images/photo/C2806T01.jpg",
-    title: "Single Room",
-    price: "",
-    description: "A simple and private single room designed for one guest, ideal for short stays.",
-    capacity: { adults: 1, children: 0 },
-  },
-  {
-    id: 4,
-    image: "/images/photo/C2826T01.jpg",
-    title: "Sweet Room",
-    price: "",
-    description: "A luxurious suite featuring spacious interiors and premium comfort for couples or families.",
-    capacity: { adults: 2, children: 2 },
-  },
-];
+  const roomData = [
+    {
+      id: 1,
+      image: "/images/photo/C2728T01.jpg",
+      title: "Studio Room",
+      price: "",
+      description: "A compact and comfortable studio room ideal for solo travelers or short stays.",
+      capacity: { adults: 1, children: 0 },
+    },
+    {
+      id: 2,
+      image: "/images/baks/baks.jpg",
+      title: "Twin Room",
+      price: "",
+      description: "A modern twin room with two separate beds, perfect for friends or colleagues.",
+      capacity: { adults: 2, children: 0 },
+    },
+    {
+      id: 3,
+      image: "/images/photo/C2806T01.jpg",
+      title: "Single Room",
+      price: "",
+      description: "A simple and private single room designed for one guest, ideal for short stays.",
+      capacity: { adults: 1, children: 0 },
+    },
+    {
+      id: 4,
+      image: "/images/photo/C2826T01.jpg",
+      title: "Sweet Room",
+      price: "",
+      description: "A luxurious suite featuring spacious interiors and premium comfort for couples or families.",
+      capacity: { adults: 2, children: 2 },
+    },
+  ];
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -143,7 +143,6 @@ const roomData = [
   };
 
   const handleReserveRoom = (room: typeof roomData[0]) => {
-    console.log("Room reserved:", room.title);
     setReservedRoom(room);
     setTimeout(() => {
       setReservedRoom(null);
@@ -153,7 +152,7 @@ const roomData = [
   };
 
   return (
-    <section id="home-section" className="relative bg-black overflow-hidden min-h-screen">
+    <section id="home-section" className="relative bg-black overflow-hidden min-h-[60vh] sm:min-h-screen">
       <video
         ref={videoRef}
         autoPlay
@@ -169,8 +168,9 @@ const roomData = [
 
       <div className="absolute inset-0 bg-black bg-opacity-50 z-10" />
 
-      <div className="container mx-auto px-4 pt-36 sm:pt-38 relative z-20">
-        <div className="text-white text-center pb-20 sm:pb-28">
+      <div className="container mx-auto px-4 pt-24 sm:pt-36 relative z-20 min-h-[60vh] sm:min-h-[100vh]">
+        {/* Updated text container with padding-top added here: */}
+        <div className="text-white text-center pt-20 pb-32 sm:pb-28">
           <h1 className="text-3xl sm:text-4xl lg:text-6xl font-semibold mb-4">Welcome to Baks Hotel</h1>
           <p className="text-base sm:text-lg lg:text-2xl mb-6">
             A clean and quiet place to rest.
@@ -198,11 +198,10 @@ const roomData = [
             className={`z-30 border border-gray-200 bg-white dark:bg-gray-800 shadow-xl rounded-t-xl 
               p-3 sm:p-4 md:p-3 transition-all duration-300
               w-full max-w-md md:max-w-5xl mx-auto
-              ${showMobileForm ? "block mt-4" : "hidden"} md:block md:mt-0
-              md:absolute md:bottom-0 md:left-1/2 md:transform md:-translate-x-1/2`}
+              ${showMobileForm ? "block fixed bottom-6 left-1/2 -translate-x-1/2 z-50" : "hidden"} 
+              md:block md:mt-0 md:absolute md:bottom-0 md:left-1/2 md:transform md:-translate-x-1/2`}
           >
             <form onSubmit={handleSubmit}>
-              {/* Close on mobile */}
               {showMobileForm && (
                 <div className="flex justify-end md:hidden mb-2">
                   <button

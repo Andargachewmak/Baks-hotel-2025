@@ -45,7 +45,7 @@ const Header: React.FC = () => {
   return (
     <header
       className={`fixed top-0 z-40 w-full transition-all duration-300 ${
-        sticky || pathUrl !== "/"
+        sticky || pathUrl !== "#home-section"
           ? "shadow-lg bg-[#238967] dark:bg-[#238967] py-4"
           : "shadow-none py-8 bg-transparent"
       }`}
