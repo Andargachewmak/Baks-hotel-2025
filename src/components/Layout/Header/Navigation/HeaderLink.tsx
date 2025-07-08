@@ -23,10 +23,20 @@ const HeaderLink: React.FC<{ item: HeaderItem }> = ({ item }) => {
       onMouseLeave={handleMouseLeave}
     >
       <Link
-        href={item.href}
-        className={`text-xl flex font-medium duration-300  ${path === item.href ? "text-[#A7C48F] " : " text-white dark:text-white/50 hover:text-gray-200 dark:hover:text-gray-200"
-          }`}
-      >
+  href={item.href}
+  onClick={(e) => {
+    if (item.href.startsWith("#")) {
+      e.preventDefault();
+      const id = item.href.replace("#", "");
+      const section = document.getElementById(id);
+      if (section) section.scrollIntoView({ behavior: "smooth" });
+    }
+  }}
+  className={`text-xl flex font-medium duration-300 ${
+    path === item.href ? "text-[#A7C48F]" : "text-white dark:text-white/50 hover:text-gray-200 dark:hover:text-gray-200"
+  }`}
+>
+
         {item.label}
         {item.submenu && (
           <svg
@@ -54,13 +64,22 @@ const HeaderLink: React.FC<{ item: HeaderItem }> = ({ item }) => {
         >
           {item.submenu?.map((subItem, index) => (
             <Link
-              key={index}
-              href={subItem.href}
-              className={`block px-4 py-2   ${path === subItem.href
-                ? "bg-primary text-white"
-                : "text-white dark:text-white hover:bg-primary"
-                }`}
-            >
+  key={index}
+  href={subItem.href}
+  onClick={(e) => {
+    if (subItem.href.startsWith("#")) {
+      e.preventDefault();
+      const id = subItem.href.replace("#", "");
+      const section = document.getElementById(id);
+      if (section) section.scrollIntoView({ behavior: "smooth" });
+    }
+  }}
+  className={`block px-4 py-2 ${
+    path === subItem.href ? "bg-primary text-white" : "text-white dark:text-white hover:bg-primary"
+  }`}
+>
+
+
               {subItem.label}
             </Link>
           ))}

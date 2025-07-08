@@ -99,11 +99,11 @@ const Header: React.FC = () => {
 
         {/* Mobile Navigation Menu */}
         <div
-          ref={mobileMenuRef}
-          className={`lg:hidden fixed top-0 right-0 h-full w-75 bg-white dark:bg-gray-800 shadow-lg transform transition-transform duration-300 ${
-            navbarOpen ? "translate-x-0" : "translate-x-full"
-          } z-50`}
-        >
+            ref={mobileMenuRef}
+            className={`lg:hidden fixed top-0 right-0 h-full w-75 bg-white dark:bg-gray-800 shadow-lg transform transition-transform duration-300 ${
+              navbarOpen ? "translate-x-0" : "translate-x-full"
+            } z-50 overflow-auto`}
+          >
           <div className="flex items-center justify-between p-4">
             {/* Logo in Mobile Menu */}
             <h2 className="text-lg font-bold text-midnight_text dark:text-midnight_text">
@@ -123,13 +123,16 @@ const Header: React.FC = () => {
             </button>
           </div>
 
-          {/* Mobile Links */}
-          <nav className="flex flex-col items-start  p-4 gap-4">
+          {/* Mobile Links with Phone */}
+          <nav className="flex flex-col items-start p-4 gap-4">
             {headerData.map((item, index) => (
-              <MobileHeaderLink key={index} item={item} />
+              <MobileHeaderLink
+                key={index}
+                item={item}
+                onClick={() => setNavbarOpen(false)}
+              />
             ))}
 
-            {/* Phone number inside mobile menu */}
             <Link
               href="#"
               className="flex items-center text-base font-medium text-black dark:text-white mt-4"

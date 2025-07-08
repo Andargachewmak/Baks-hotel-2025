@@ -36,6 +36,7 @@ const Gallery = () => {
             {galleryImages.map((item, index) => (
               <ImageSliderCard
                 key={index}
+                index={index}
                 item={{
                   images: item.images,
                   name: item.name ?? `Gallery Item ${index + 1}`,
@@ -53,7 +54,16 @@ const Gallery = () => {
 
 export default Gallery;
 
-const ImageSliderCard = ({ item }: { item: GalleryItem }) => {
+// ------------------------------
+// ⬇️ ImageSliderCard Component
+// ------------------------------
+const ImageSliderCard = ({
+  item,
+  index,
+}: {
+  item: GalleryItem;
+  index: number;
+}) => {
   const [current, setCurrent] = useState(0);
   const total = item.images?.length || 0;
 
@@ -61,27 +71,32 @@ const ImageSliderCard = ({ item }: { item: GalleryItem }) => {
     if (total === 0) return;
     const interval = setInterval(() => {
       setCurrent((prev) => (prev + 1) % total);
-    }, 4000);
+    }, 2500); // ⏱️ Faster slide (2.5s)
     return () => clearInterval(interval);
   }, [total]);
 
   if (total === 0) return null;
 
   const nextSlide = () => setCurrent((prev) => (prev + 1) % total);
-  const prevSlide = () => setCurrent((prev) => (prev - 1 + total) % total);
+const prevSlide = () => setCurrent((prev) => (prev - 1 + total) % total);
 
   return (
     <div className="overflow-hidden rounded-3xl mb-6 relative group">
       <div className="relative w-full aspect-[4/3] overflow-hidden">
+        {/* Optimized Image */}
         <Image
           src={item.images[current]}
           alt={item.name ?? "Gallery image"}
           fill
+          priority={index < 2} // preload first two
+          placeholder="blur"
+          blurDataURL={item.images[current]} // if local or CDN supports blur previews
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw"
           className="object-cover transition-transform duration-500 group-hover:scale-110"
         />
 
-        {/* Dots Navigation */}
-        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
+        {/* Navigation Dots */}
+        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2 z-10">
           {item.images.map((_, i) => (
             <button
               key={i}
@@ -94,12 +109,12 @@ const ImageSliderCard = ({ item }: { item: GalleryItem }) => {
           ))}
         </div>
 
-        {/* Prev/Next Buttons */}
+        {/* Prev/Next Arrows */}
         {total > 1 && (
           <>
             <button
               onClick={prevSlide}
-              className="absolute left-3 top-1/2 -translate-y-1/2 text-white text-xl"
+              className="absolute left-3 top-1/2 -translate-y-1/2 text-white text-3xl z-10 bg-black/30 hover:bg-black/50 rounded-full w-8 h-8 flex items-center justify-center"
               title="Previous image"
               aria-label="Previous image"
             >
@@ -107,7 +122,7 @@ const ImageSliderCard = ({ item }: { item: GalleryItem }) => {
             </button>
             <button
               onClick={nextSlide}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-white text-xl"
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-white text-3xl z-10 bg-black/30 hover:bg-black/50 rounded-full w-8 h-8 flex items-center justify-center"
               title="Next image"
               aria-label="Next image"
             >
@@ -116,8 +131,8 @@ const ImageSliderCard = ({ item }: { item: GalleryItem }) => {
           </>
         )}
 
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-8">
+        {/* Overlay with Info + Button */}
+        <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-8 z-0">
           <div className="space-y-4">
             <p className="text-white text-xl font-bold">{item.name}</p>
             <p className="text-white text-lg">{item.description}</p>
@@ -128,7 +143,6 @@ const ImageSliderCard = ({ item }: { item: GalleryItem }) => {
             >
               Book Now
             </Link>
-
           </div>
         </div>
       </div>
