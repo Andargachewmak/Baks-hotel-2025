@@ -135,7 +135,7 @@ const Header: React.FC = () => {
 
             <Link
               href="#"
-              className="flex items-center text-base font-medium text-black dark:text-white mt-4"
+              className="flex items-center text-base font-medium text-white/80 dark:text-white mt-4"
             >
               <Icon icon="solar:phone-bold" className="text-2xl me-2" />
               +251911517716
