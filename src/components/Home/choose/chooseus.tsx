@@ -8,7 +8,7 @@ const features = [
     icon: "mdi:room-service-outline",
     title: "Exceptional Service",
     description:
-      "Our dedicated staff is available 24/7 to make your stay as comfortable and memorable as possible.",
+      "Enjoy 24/7 assistance, convenient airport pickup, and reliable parking service to make your stay effortless.",
   },
   {
     icon: "material-symbols:shield-lock-outline",
@@ -23,10 +23,10 @@ const features = [
       "Located close to major attractions, transport, and business hubs for convenience and accessibility.",
   },
   {
-    icon: "mdi:sofa-single",
-    title: "Home-Like Comfort",
+    icon: "mdi:calendar-clock-outline", // changed icon for flexible booking
+    title: "Flexible Booking",
     description:
-      "Spacious rooms, modern interiors, and cozy furnishings give you the comfort of home away from home.",
+      "Book your stay daily, weekly, or monthly — with discounted long-term rates that offer exceptional value and flexibility.",
   },
 ];
 

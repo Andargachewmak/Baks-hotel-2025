@@ -197,25 +197,27 @@ const Hero = () => {
 
       <div className="container mx-auto px-4 pt-24 sm:pt-36 relative z-20 min-h-[60vh] sm:min-h-[100vh]">
         {/* Updated text container with padding-top added here: */}
-        <div className="text-white text-center pt-20 pb-32 sm:pb-28">
-          <h1 className="text-3xl sm:text-4xl lg:text-6xl font-semibold mb-4">
-            BAKS Hotel Apartment - Stay Your Way
-          </h1>
-          <p className="text-base sm:text-lg lg:text-2xl mb-6">
-            Welcome to BAKS – A Smart Stay for Every Schedule… Short stays or
-            extended visits, BAKS gives you the freedom of choice with
-            hotel-style comfort and apartment-style convenience
-          </p>
-          <div className="flex justify-center">
-            <button
-              onClick={scrollToForm}
-              className="w-fit sm:w-auto bg-[#238967] hover:bg-transparent text-white border border-white px-4 py-2 rounded-full text-sm font-medium transition sm:text-base sm:px-6 sm:py-2.5"
-            >
-              Book Now
-            </button>
-          </div>
-        </div>
-      </div>
+<div className="text-white text-center pt-20 pb-32 sm:pb-28">
+  <div className="max-w-4xl mx-auto px-4">
+    <h1 className="text-3xl sm:text-4xl lg:text-6xl font-semibold mb-8">
+      BAKS Hotel Apartment <br /> Stay Your Way
+    </h1>
+    <p className="text-base sm:text-lg lg:text-2xl mb-6">
+      Welcome to BAKS – A Smart Stay for Every Schedule… Short stays or extended visits,
+      BAKS gives you the freedom of choice with hotel-style comfort and apartment-style convenience.
+    </p>
+    
+    <div className="flex justify-center">
+      <button
+        onClick={scrollToForm}
+        className="w-fit sm:w-auto bg-[#238967] hover:bg-transparent text-white border border-white px-4 py-2 rounded-full text-sm font-medium transition sm:text-base sm:px-6 sm:py-2.5"
+      >
+        Book Now
+      </button>
+    </div>
+  </div>
+</div>
+</div>
 
       {!showRooms && !reservedRoom && (
         <div className="flex justify-center px-2 sm:px-4 md:px-8">

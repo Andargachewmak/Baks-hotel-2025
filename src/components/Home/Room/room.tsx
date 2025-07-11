@@ -36,37 +36,48 @@ const RoomsPage: React.FC = () => {
 
   return (
     <div className="max-w-[1600px] mx-auto px-6 pt-24 pb-20" id="rooms-section">
-      {/* Heading */}
       <p className="text-[#238967] text-2xl sm:text-3xl text-center md:text-4xl lg:text-5xl font-semibold mb-16 tracking-tighter uppercase">
         Our Rooms
       </p>
 
-      {/* Room Grid - side by side layout */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 justify-items-center">
-        {rooms.map((room, index) => (
-          <Room
-            key={index}
-            title={room.title}
-            description={room.description}
-            features={room.features}
-            imageSrc={room.imageSrc}
-            altText={room.altText}
-            priority={index < 2}
-          />
-        ))}
+        {rooms.map((room, index) => {
+          const [firstLine, secondLine] = room.title.split(" – ");
+          return (
+            <Room
+              key={index}
+              firstLine={firstLine}
+              secondLine={secondLine}
+              description={room.description}
+              features={room.features}
+              imageSrc={room.imageSrc}
+              altText={room.altText}
+              priority={index < 2}
+            />
+          );
+        })}
       </div>
     </div>
   );
 };
 
 const Room: React.FC<{
-  title: string;
+  firstLine: string;
+  secondLine: string;
   description: string;
   features: string[];
   imageSrc: string;
   altText: string;
   priority?: boolean;
-}> = ({ title, description, features, imageSrc, altText, priority }) => {
+}> = ({
+  firstLine,
+  secondLine,
+  description,
+  features,
+  imageSrc,
+  altText,
+  priority,
+}) => {
   return (
     <div className="group relative w-full max-w-[700px] rounded-3xl overflow-hidden transition-all duration-300 hover:scale-[1.02] bg-gray-800 shadow-2xl flex flex-col min-h-[300px]">
       {/* Image Section */}
@@ -100,8 +111,11 @@ const Room: React.FC<{
       {/* Content */}
       <div className="p-8 sm:p-10 bg-white dark:bg-gray-900 flex-grow">
         <h3 className="text-2xl sm:text-3xl font-bold text-gray-800 dark:text-gray-200 mb-4 group-hover:text-[#238967] transition-colors duration-300">
-          {title}
-        </h3>
+  {firstLine}
+  <br />
+  <span className="block pl-4 sm:pl-6">{secondLine}</span>
+</h3>
+
         <p className="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
           {description}
         </p>

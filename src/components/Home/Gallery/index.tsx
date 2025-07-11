@@ -27,10 +27,10 @@ const Gallery = () => {
         </div>
 
         {/* Masonry Gallery */}
-        <div className="my-16 px-6">
+        <div className="my-16 px-8">
           <Masonry
             breakpointCols={{ default: 2, 700: 2, 500: 1 }}
-            className="flex gap-6"
+            className="flex gap-12"
             columnClassName="masonry-column"
           >
             {galleryImages.map((item, index) => (
