@@ -19,7 +19,7 @@ const Header: React.FC = () => {
   const mobileMenuRef = useRef<HTMLDivElement>(null);
 
   const handleScroll = () => {
-    setSticky(window.scrollY >= 20);
+    setSticky(window.scrollY > 20);
   };
 
   const handleClickOutside = (event: MouseEvent) => {
@@ -45,9 +45,9 @@ const Header: React.FC = () => {
   return (
     <header
       className={`fixed top-0 z-40 w-full transition-all duration-300 ${
-        sticky || pathUrl !== "#home-section"
+        sticky
           ? "shadow-lg bg-[#238967] dark:bg-[#238967] py-4"
-          : "shadow-none py-8 bg-transparent"
+          : "bg-transparent shadow-none py-8"
       }`}
     >
       <div className="lg:py-0 py-2">
@@ -99,11 +99,11 @@ const Header: React.FC = () => {
 
         {/* Mobile Navigation Menu */}
         <div
-            ref={mobileMenuRef}
-            className={`lg:hidden fixed top-0 right-0 h-full w-75 bg-white dark:bg-gray-800 shadow-lg transform transition-transform duration-300 ${
-              navbarOpen ? "translate-x-0" : "translate-x-full"
-            } z-50 overflow-auto`}
-          >
+          ref={mobileMenuRef}
+          className={`lg:hidden fixed top-0 right-0 h-full w-75 bg-white dark:bg-gray-800 shadow-lg transform transition-transform duration-300 ${
+            navbarOpen ? "translate-x-0" : "translate-x-full"
+          } z-50 overflow-auto`}
+        >
           <div className="flex items-center justify-between p-4">
             {/* Logo in Mobile Menu */}
             <h2 className="text-lg font-bold text-midnight_text dark:text-midnight_text">

@@ -36,7 +36,8 @@ const Hero = () => {
       image: "/images/photo/C2728T01.jpg",
       title: "Studio Room",
       price: "",
-      description: "A compact and comfortable studio room ideal for solo travelers or short stays.",
+      description:
+        "A compact and comfortable studio room ideal for solo travelers or short stays.",
       capacity: { adults: 1, children: 0 },
     },
     {
@@ -44,7 +45,8 @@ const Hero = () => {
       image: "/images/baks/baks.jpg",
       title: "Twin Room",
       price: "",
-      description: "A modern twin room with two separate beds, perfect for friends or colleagues.",
+      description:
+        "A modern twin room with two separate beds, perfect for friends or colleagues.",
       capacity: { adults: 2, children: 0 },
     },
     {
@@ -52,7 +54,8 @@ const Hero = () => {
       image: "/images/photo/C2806T01.jpg",
       title: "Single Room",
       price: "",
-      description: "A simple and private single room designed for one guest, ideal for short stays.",
+      description:
+        "A simple and private single room designed for one guest, ideal for short stays.",
       capacity: { adults: 1, children: 0 },
     },
     {
@@ -60,7 +63,8 @@ const Hero = () => {
       image: "/images/photo/C2826T01.jpg",
       title: "Sweet Room",
       price: "",
-      description: "A luxurious suite featuring spacious interiors and premium comfort for couples or families.",
+      description:
+        "A luxurious suite featuring spacious interiors and premium comfort for couples or families.",
       capacity: { adults: 2, children: 2 },
     },
   ];
@@ -71,11 +75,17 @@ const Hero = () => {
   };
 
   const increment = (field: "adults" | "children", max: number) => {
-    setFormData((prev) => ({ ...prev, [field]: Math.min(prev[field] + 1, max) }));
+    setFormData((prev) => ({
+      ...prev,
+      [field]: Math.min(prev[field] + 1, max),
+    }));
   };
 
   const decrement = (field: "adults" | "children", min: number) => {
-    setFormData((prev) => ({ ...prev, [field]: Math.max(prev[field] - 1, min) }));
+    setFormData((prev) => ({
+      ...prev,
+      [field]: Math.max(prev[field] - 1, min),
+    }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -83,7 +93,9 @@ const Hero = () => {
     setStatus("submitting");
     try {
       const form = new FormData();
-      Object.entries(formData).forEach(([key, value]) => form.append(key, String(value)));
+      Object.entries(formData).forEach(([key, value]) =>
+        form.append(key, String(value))
+      );
       const res = await fetch("https://formspree.io/f/xjkryrla", {
         method: "POST",
         headers: { Accept: "application/json" },
@@ -93,7 +105,9 @@ const Hero = () => {
         setStatus("success");
         setShowRooms(true);
         setTimeout(() => {
-          document.getElementById("rooms-section")?.scrollIntoView({ behavior: "smooth" });
+          document
+            .getElementById("rooms-section")
+            ?.scrollIntoView({ behavior: "smooth" });
         }, 300);
       } else {
         setStatus("error");
@@ -114,7 +128,9 @@ const Hero = () => {
     if (videoRef.current) {
       const video = videoRef.current;
       video.load();
-      video.play().catch((err) => console.warn("Autoplay failed:", err));
+      video
+        .play()
+        .catch((err) => console.warn("Autoplay failed:", err));
       video.playbackRate = 0.5;
     }
   }, []);
@@ -130,7 +146,8 @@ const Hero = () => {
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    return () =>
+      document.removeEventListener("mousedown", handleClickOutside);
   }, [showMobileForm]);
 
   const scrollToForm = () => {
@@ -147,12 +164,22 @@ const Hero = () => {
     setTimeout(() => {
       setReservedRoom(null);
       setShowRooms(false);
-      setFormData({ name: "", email: "", checkIn: "", checkOut: "", adults: 1, children: 0 });
+      setFormData({
+        name: "",
+        email: "",
+        checkIn: "",
+        checkOut: "",
+        adults: 1,
+        children: 0,
+      });
     }, 3000);
   };
 
   return (
-    <section id="home-section" className="relative bg-black overflow-hidden min-h-[60vh] sm:min-h-screen">
+    <section
+      id="home-section"
+      className="relative bg-black overflow-hidden min-h-[60vh] sm:min-h-screen"
+    >
       <video
         ref={videoRef}
         autoPlay
@@ -171,11 +198,13 @@ const Hero = () => {
       <div className="container mx-auto px-4 pt-24 sm:pt-36 relative z-20 min-h-[60vh] sm:min-h-[100vh]">
         {/* Updated text container with padding-top added here: */}
         <div className="text-white text-center pt-20 pb-32 sm:pb-28">
-          <h1 className="text-3xl sm:text-4xl lg:text-6xl font-semibold mb-4">BAKS Hotel Apartment - Stay Your Way</h1>
+          <h1 className="text-3xl sm:text-4xl lg:text-6xl font-semibold mb-4">
+            BAKS Hotel Apartment - Stay Your Way
+          </h1>
           <p className="text-base sm:text-lg lg:text-2xl mb-6">
-           Welcome to BAKS – A Smart Stay for Every Schedule… Short stays or extended visits,
-            BAKS gives you the freedom of choice with hotel-style comfort and apartment-style 
-            convenience
+            Welcome to BAKS – A Smart Stay for Every Schedule… Short stays or
+            extended visits, BAKS gives you the freedom of choice with
+            hotel-style comfort and apartment-style convenience
           </p>
           <div className="flex justify-center">
             <button
@@ -198,7 +227,11 @@ const Hero = () => {
             className={`z-30 border border-gray-200 bg-white dark:bg-gray-800 shadow-xl rounded-t-xl 
               p-3 sm:p-4 md:p-3 transition-all duration-300
               w-full max-w-md md:max-w-5xl mx-auto
-              ${showMobileForm ? "block fixed bottom-6 left-1/2 -translate-x-1/2 z-50" : "hidden"} 
+              ${
+                showMobileForm
+                  ? "block fixed bottom-16 left-1/2 -translate-x-1/2 z-50"
+                  : "hidden"
+              } 
               md:block md:mt-0 md:absolute md:bottom-0 md:left-1/2 md:transform md:-translate-x-1/2`}
           >
             <form onSubmit={handleSubmit}>
@@ -254,10 +287,15 @@ const Hero = () => {
                   />
                 ))}
                 {["adults", "children"].map((field) => (
-                  <div key={field} className="flex items-center border border-gray-300 rounded">
+                  <div
+                    key={field}
+                    className="flex items-center border border-gray-300 rounded"
+                  >
                     <span
                       className="px-2 cursor-pointer"
-                      onClick={() => decrement(field as any, field === "adults" ? 1 : 0)}
+                      onClick={() =>
+                        decrement(field as any, field === "adults" ? 1 : 0)
+                      }
                     >
                       -
                     </span>
@@ -270,7 +308,9 @@ const Hero = () => {
                     />
                     <span
                       className="px-2 cursor-pointer"
-                      onClick={() => increment(field as any, field === "adults" ? 29 : 10)}
+                      onClick={() =>
+                        increment(field as any, field === "adults" ? 29 : 10)
+                      }
                     >
                       +
                     </span>
@@ -279,8 +319,12 @@ const Hero = () => {
               </div>
 
               <div className="text-center mt-2 min-h-[24px]">
-                {status === "success" && <p className="text-green-600 text-sm">✅ Room is reserved for you.</p>}
-                {status === "error" && <p className="text-red-600 text-sm">❌ Something went wrong.</p>}
+                {status === "success" && (
+                  <p className="text-green-600 text-sm">✅ Room is reserved for you.</p>
+                )}
+                {status === "error" && (
+                  <p className="text-red-600 text-sm">❌ Something went wrong.</p>
+                )}
               </div>
 
               <div className="mt-2 text-center">
@@ -289,7 +333,9 @@ const Hero = () => {
                   disabled={status === "submitting"}
                   className="bg-[#238967] text-white text-sm px-4 py-2 rounded hover:bg-opacity-90 transition disabled:opacity-50"
                 >
-                  {status === "submitting" ? "Submitting..." : "CHECK AVAILABILITY"}
+                  {status === "submitting"
+                    ? "Submitting..."
+                    : "CHECK AVAILABILITY"}
                 </button>
               </div>
             </form>
@@ -298,8 +344,13 @@ const Hero = () => {
       )}
 
       {showRooms && !reservedRoom && (
-        <div id="rooms-section" className="container mx-auto px-4 py-12 relative z-30 max-w-6xl">
-          <h2 className="text-white text-3xl font-semibold mb-6 text-center">Available Rooms</h2>
+        <div
+          id="rooms-section"
+          className="container mx-auto px-4 py-12 relative z-30 max-w-6xl"
+        >
+          <h2 className="text-white text-3xl font-semibold mb-6 text-center">
+            Available Rooms
+          </h2>
           <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-4">
             {roomData.map((room) => (
               <div
@@ -314,9 +365,15 @@ const Hero = () => {
                   className="object-cover"
                 />
                 <div className="p-4 flex-grow flex flex-col">
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">{room.title}</h3>
-                  <p className="text-sm text-gray-700 dark:text-gray-300 mb-2">{room.price}</p>
-                  <p className="text-gray-600 dark:text-gray-400 flex-grow">{room.description}</p>
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                    {room.title}
+                  </h3>
+                  <p className="text-sm text-gray-700 dark:text-gray-300 mb-2">
+                    {room.price}
+                  </p>
+                  <p className="text-gray-600 dark:text-gray-400 flex-grow">
+                    {room.description}
+                  </p>
                   <button
                     onClick={() => handleReserveRoom(room)}
                     className="mt-4 bg-[#238967] text-white py-2 rounded hover:bg-opacity-90 transition"
@@ -342,7 +399,9 @@ const Hero = () => {
               height={200}
               className="mx-auto rounded-lg"
             />
-            <p className="mt-4">Thank you for booking with us, {formData.name || "Guest"}.</p>
+            <p className="mt-4">
+              Thank you for booking with us, {formData.name || "Guest"}.
+            </p>
             <p className="mt-2">We look forward to hosting you.</p>
           </div>
         </div>
