@@ -23,7 +23,7 @@ const Cook = () => {
           <div className="space-y-6 text-center lg:text-left">
             {/* Subtitle */}
             <p className="text-[#238967] text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold mb-3 tracking-tighter  uppercase">
-              About Us
+              About Baks
             </p>
 
             {/* Title */}
@@ -31,21 +31,27 @@ const Cook = () => {
 
             {/* Paragraph 1 */}
             <p className="text-black/60 dark:text-white/60 text-base sm:text-lg">
-              Welcome to Baks Hotel, where comfort meets elegance. Nestled in a
-              prime location, we offer a relaxing and homely atmosphere for
-              travelers seeking quality accommodation. Whether you're here for
-              business or leisure, our guest house provides a seamless blend of
-              modern amenities and traditional hospitality.
+              BAKS is a small, family-run hotel apartment that’s been welcoming guests since 2008. 
+              What started as a simple idea—to offer a flexible and comfortable place for both 
+              short and long stays—has grown into a trusted home-away-from-home for travelers
+               from all walks of life.
+
             </p>
 
             {/* Paragraph 2 */}
             <p className="text-black/60 dark:text-white/60 text-base sm:text-lg">
-              At Baks Hotel, we prioritize guest satisfaction by offering
-              personalized services, well-equipped rooms, and a welcoming
-              ambiance. Our goal is to make every stay memorable with a touch of
-              warmth and professionalism.
+              What sets us apart isn’t just our convenient location or flexible room
+               options—it’s our people. At BAKS, we genuinely care about our guests.
+                Our friendly staff go above and beyond to make sure everyone feels at home,
+                 whether you’re here for a night or a few months.
             </p>
-
+            {/* Paragraph 3 */}
+                  <p className="text-black/60 dark:text-white/60 text-base sm:text-lg">
+              Many of our guests return time and time again, not just for the space and comfort,
+               but for the warmth and personal touch they’ve come to expect from us. We’re proud 
+               of the loyal community we’ve built over the years—and we look forward to welcoming 
+               you into it.
+            </p>
             {/* Call-to-Action Button */}
             <a
               href="tel:+251936747234"

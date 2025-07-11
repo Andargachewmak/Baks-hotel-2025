@@ -171,11 +171,11 @@ const Hero = () => {
       <div className="container mx-auto px-4 pt-24 sm:pt-36 relative z-20 min-h-[60vh] sm:min-h-[100vh]">
         {/* Updated text container with padding-top added here: */}
         <div className="text-white text-center pt-20 pb-32 sm:pb-28">
-          <h1 className="text-3xl sm:text-4xl lg:text-6xl font-semibold mb-4">Welcome to Baks Hotel</h1>
+          <h1 className="text-3xl sm:text-4xl lg:text-6xl font-semibold mb-4">BAKS Hotel Apartment - Stay Your Way</h1>
           <p className="text-base sm:text-lg lg:text-2xl mb-6">
-            A clean and quiet place to rest.
-            <br className="hidden sm:block" />
-            Perfect for locals and diaspora looking for a simple, affordable stay.
+           Welcome to BAKS – A Smart Stay for Every Schedule… Short stays or extended visits,
+            BAKS gives you the freedom of choice with hotel-style comfort and apartment-style 
+            convenience
           </p>
           <div className="flex justify-center">
             <button

@@ -6,40 +6,43 @@ import Image from "next/image";
 const RoomsPage: React.FC = () => {
   const rooms = [
     {
-      title: "Sweet Room",
+      title: "Serviced Apartments – Perfect for Long Stays",
       description:
-        "Elegant and cozy room with a queen bed, ideal for couples or solo guests seeking comfort.",
-      features: ["1 Queen Bed", "1–2 Guests"],
+        "Elegant and cozy space featuring a queen bed, ideal for long stays with complete amenities and great comfort.",
+      features: [
+        "Bedroom, living area, full kitchen, and private bathroom",
+        "Housekeeping",
+        "Laundry facilities",
+        "Discounted long-stay rates",
+        "TV",
+      ],
       imageSrc: "/images/photo/C2819T01.jpg",
-      altText: "Exclusive Room",
+      altText: "Serviced Apartment Room",
     },
     {
-      title: "Twin Room",
+      title: "Hotel Rooms – Ideal for Short Stays",
       description:
-        "Comfortable and spacious room with two beds, perfect for friends or small families.",
-      features: ["2 Beds", "Balcony", "Up to 2 Guests"],
+        "Comfortable and spacious hotel room with two beds, perfect for travelers and families visiting short term.",
+      features: [
+        "Double bed for 2 people",
+        "En-suite bathroom",
+        "Wi-Fi, TV",
+        "Daily housekeeping",
+      ],
       imageSrc: "/images/baks/baks.jpg",
-      altText: "Family Room",
-    },
-    {
-      title: "Single Room",
-      description:
-        "A sleek and modern room tailored for solo travelers or business guests, with workspace and high-speed internet.",
-      features: ["1 King Bed", "Free Wi-Fi"],
-      imageSrc: "/images/photo/C2733T01.jpg",
-      altText: "Business Room",
+      altText: "Hotel Room",
     },
   ];
 
   return (
-    <div className="container mx-auto px-4 pt-24 pb-16" id="rooms-section">
+    <div className="max-w-[1600px] mx-auto px-6 pt-24 pb-20" id="rooms-section">
       {/* Heading */}
-      <p className="text-[#238967] text-2xl sm:text-3xl text-center md:text-4xl lg:text-5xl font-semibold mb-12 tracking-tighter uppercase">
+      <p className="text-[#238967] text-2xl sm:text-3xl text-center md:text-4xl lg:text-5xl font-semibold mb-16 tracking-tighter uppercase">
         Our Rooms
       </p>
 
-      {/* Room Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 animate-slide-in">
+      {/* Room Grid - side by side layout */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 justify-items-center">
         {rooms.map((room, index) => (
           <Room
             key={index}
@@ -48,7 +51,7 @@ const RoomsPage: React.FC = () => {
             features={room.features}
             imageSrc={room.imageSrc}
             altText={room.altText}
-            priority={index < 2} // Only first two images get preload
+            priority={index < 2}
           />
         ))}
       </div>
@@ -65,9 +68,9 @@ const Room: React.FC<{
   priority?: boolean;
 }> = ({ title, description, features, imageSrc, altText, priority }) => {
   return (
-    <div className="group relative rounded-lg overflow-hidden transition-all duration-300 hover:scale-[1.02] bg-gray-800">
+    <div className="group relative w-full max-w-[700px] rounded-3xl overflow-hidden transition-all duration-300 hover:scale-[1.02] bg-gray-800 shadow-2xl flex flex-col min-h-[300px]">
       {/* Image Section */}
-      <div className="relative w-full h-56 sm:h-64">
+      <div className="relative w-full h-[26rem]">
         <Image
           src={imageSrc}
           alt={altText}
@@ -75,18 +78,18 @@ const Room: React.FC<{
           priority={priority}
           loading={priority ? "eager" : "lazy"}
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
         />
 
         {/* Overlay with Features */}
-        <div className="absolute -bottom-2.5 left-0 right-0 p-2 sm:p-3 bg-gradient-to-t from-black/80 to-transparent">
-          <ul className="space-y-1 sm:space-y-2">
+        <div className="absolute -bottom-2.5 left-0 right-0 p-5 bg-gradient-to-t from-black/80 to-transparent">
+          <ul className="space-y-2">
             {features.map((feature, index) => (
               <li
                 key={index}
-                className="flex items-center text-xs sm:text-sm text-white opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 ease-in-out"
+                className="flex items-center text-base text-white opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 ease-in-out"
               >
-                <span className="mr-2 text-[#238967]">●</span>
+                <span className="mr-2 text-[#238967] text-lg">●</span>
                 {feature}
               </li>
             ))}
@@ -95,11 +98,13 @@ const Room: React.FC<{
       </div>
 
       {/* Content */}
-      <div className="p-4 sm:p-6 bg-white dark:bg-gray-900">
-        <h3 className="text-lg sm:text-xl font-bold text-gray-800 dark:text-gray-200 mb-2 sm:mb-3 group-hover:text-[#238967] transition-colors duration-300">
+      <div className="p-8 sm:p-10 bg-white dark:bg-gray-900 flex-grow">
+        <h3 className="text-2xl sm:text-3xl font-bold text-gray-800 dark:text-gray-200 mb-4 group-hover:text-[#238967] transition-colors duration-300">
           {title}
         </h3>
-        <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">{description}</p>
+        <p className="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+          {description}
+        </p>
       </div>
     </div>
   );

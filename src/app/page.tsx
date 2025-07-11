@@ -5,6 +5,7 @@ import Cook from "@/components/Home/Cook";
 import Gallery from "@/components/Home/Gallery";
 import Room from "@/components/Home/Room/room";
 import ContactUs from "@/components/Home/ContactUs/contactus";
+import WhyChooseUs from "@/components/Home/choose/chooseus";
 
 export const metadata: Metadata = {
   title: "Baks Hotel",
@@ -20,6 +21,7 @@ export default function Home() {
       <Cook />
       <Services />
       <Room />
+      <WhyChooseUs />
       <Gallery />
       <ContactUs />
     </main>
