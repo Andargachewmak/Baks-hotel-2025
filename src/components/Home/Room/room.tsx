@@ -113,7 +113,7 @@ const Room: React.FC<{
         <h3 className="text-2xl sm:text-3xl font-bold text-gray-800 dark:text-gray-200 mb-4 group-hover:text-[#238967] transition-colors duration-300">
   {firstLine}
   <br />
-  <span className="block pl-4 sm:pl-6">{secondLine}</span>
+  <span className="block ">{secondLine}</span>
 </h3>
 
         <p className="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">

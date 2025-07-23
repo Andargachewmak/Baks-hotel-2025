@@ -110,7 +110,7 @@ const prevSlide = () => setCurrent((prev) => (prev - 1 + total) % total);
         </div>
 
         {/* Prev/Next Arrows */}
-        {total > 1 && (
+        {/* {total > 1 && (
           <>
             <button
               onClick={prevSlide}
@@ -129,10 +129,10 @@ const prevSlide = () => setCurrent((prev) => (prev - 1 + total) % total);
               ›
             </button>
           </>
-        )}
+        )} */}
 
         {/* Overlay with Info + Button */}
-        <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-8 z-0">
+        <div className="absolute inset-0    transition-opacity duration-500 flex items-end p-8 z-0">
           <div className="space-y-4">
             <p className="text-white text-xl font-bold">{item.name}</p>
             <p className="text-white text-lg">{item.description}</p>

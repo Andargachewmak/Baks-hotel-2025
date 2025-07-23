@@ -39,30 +39,6 @@ const Services = () => {
               </p>
 
               {/* Learn More Link */}
-              <div className="flex items-center justify-center">
-                <Link
-                  href="/"
-                  className="text-base group font-medium text-white flex items-center relative after:absolute after:w-full after:h-px after:bg-white after:bottom-0 after:right-0 after:translate-x-full hover:after:translate-x-0 transition-all"
-                >
-                  Learn More
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    className="ml-2 text-[#A7C48F]"
-                  >
-                    <path
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M9 6l6 6-6 6"
-                    />
-                  </svg>
-                </Link>
-              </div>
             </div>
           ))}
         </div>

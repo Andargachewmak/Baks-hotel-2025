@@ -16,7 +16,7 @@ export const ServicesData: {
   },
   {
     icons: <FaParking />,
-    heading: "car parking",
+    heading: "Car Parking",
     subheading:  "Secure and spacious on-site parking is available for guests, providing peace of mind and easy access during your stay.",
   },
   {

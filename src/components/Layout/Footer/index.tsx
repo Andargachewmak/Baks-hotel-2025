@@ -142,39 +142,61 @@ const Footer: FC = () => {
           </div>
 
           {/* Column 4: Contact Info and Reservation */}
-          <div className="col-span-1">
-            <h4 className="text-white dark:text-white mb-9 font-semibold text-xl">
-              Contact Info
-            </h4>
-            <ul>
-              <li className="pb-3 flex items-center gap-2">
-                <Icon icon="fa-solid:map-marker-alt" className="text-white" />
-                <span className="text-white/70 dark:text-white/70 text-base">
-                  Aw-Hakm Building, Bob Marley, Addis Ababa
-                </span>
-              </li>
-              <li className="pb-3 flex items-center gap-2">
-                <Icon icon="fa-solid:phone-alt" className="text-white" />
-                <span className="text-white/70 dark:text-white/70 text-base">
-                  +251911517716
-                </span>
-              </li>
-              <li>
-                <div className="flex items-center space-x-2 pb-3 text-white/70">
-                  <Icon icon="mdi:whatsapp" width={24} height={24} className="text-white" />
-                  <span>+447915609464</span>
-                </div>
-              </li>
-              <li className="pb-3 flex items-center gap-2">
-                <Icon icon="fa-solid:envelope" className="text-white" />
-                <span className="text-white/70 dark:text-white/70 text-base">
-                  bakshotels@gmail.com
-                </span>
-              </li>
-            </ul>
-          </div>
+<div className="col-span-1">
+  <h4 className="text-white dark:text-white mb-9 font-semibold text-xl">
+    Contact Info
+  </h4>
+  <ul>
+    <li className="pb-3 flex items-center gap-2">
+      <Icon
+        icon="fa-solid:map-marker-alt"
+        className="text-white"
+        width={20}
+        height={20}
+      />
+      <span className="text-white/70 dark:text-white/70 text-base">
+        Aw-Hakm Building, Bob Marley, Addis Ababa
+      </span>
+    </li>
+    <li className="pb-3 flex items-center gap-2">
+      <Icon
+        icon="fa-solid:phone-alt"
+        className="text-white"
+        width={20}
+        height={20}
+      />
+      <span className="text-white/70 dark:text-white/70 text-base">
+        +251911517716
+      </span>
+    </li>
+    <li className="pb-3 flex items-center gap-2">
+      <Icon
+        icon="mdi:whatsapp"
+        className="text-white"
+        width={20}
+        height={20}
+      />
+      <span className="text-white/70 dark:text-white/70 text-base">
+        +447915609464
+      </span>
+    </li>
+    <li className="pb-3 flex items-center gap-2">
+      <Icon
+        icon="fa-solid:envelope"
+        className="text-white"
+        width={20}
+        height={20}
+      />
+      <span className="text-white/70 dark:text-white/70 text-base">
+        bakshotels@gmail.com
+      </span>
+    </li>
+  </ul>
+</div>
         </div>
 
+        {/* Reservation Button */}
+        
         {/* Divider */}
         <div className="border-t border-grey/15 dark:border-white/15 my-10"></div>
 
