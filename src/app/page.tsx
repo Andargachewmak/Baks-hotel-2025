@@ -15,13 +15,15 @@ export default function Home() {
       <NextSeo
         title="Welcome to Baks Hotel"
         description="Stay Your Way at Baks Hotel - Your Premier Destination for Comfort and Luxury"
+        canonical="https://bakshotel.com/"
         openGraph={{
           url: 'https://bakshotel.com/',
           title: 'Welcome to Baks Hotel',
-          description: 'Stay Your Way at Baks Hotel - Your Premier Destination for Comfort and Luxury',
+          description:
+            'Stay Your Way at Baks Hotel - Your Premier Destination for Comfort and Luxury',
           images: [
             {
-              url: 'https://bakshotel.com/images/baks/bakshotel.svg',
+              url: 'https://bakshotel.com/images/og-image.jpg', // ✅ Prefer JPG or PNG for OG image
               width: 1200,
               height: 630,
               alt: 'Baks Hotel - Exterior View',
@@ -30,6 +32,7 @@ export default function Home() {
           site_name: 'Baks Hotel',
         }}
       />
+
       <main>
         <Hero />
         <Cook />
