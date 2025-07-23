@@ -162,8 +162,8 @@ const Footer: FC = () => {
       <Icon
         icon="fa-solid:phone-alt"
         className="text-white"
-        width={20}
-        height={20}
+        width={16}
+        height={16}
       />
       <span className="text-white/70 dark:text-white/70 text-base">
         +251911517716
@@ -184,8 +184,8 @@ const Footer: FC = () => {
       <Icon
         icon="fa-solid:envelope"
         className="text-white"
-        width={20}
-        height={20}
+        width={16}
+        height={16}
       />
       <span className="text-white/70 dark:text-white/70 text-base">
         bakshotels@gmail.com
